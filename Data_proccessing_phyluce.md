@@ -97,4 +97,4 @@ To evalute the trimmed reads, I used FASTQC application on Hydra using followin 
    #
    echo = `date` job $JOB_NAME done
    ```
-* Check HTML file in local browser like Safari, Google Chrome.
+* Check HTML output file in the local browser like Safari, Google Chrome.
