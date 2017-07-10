@@ -70,4 +70,31 @@ To trim adapters and low quality reads before assembly, phyluce's illumiprocesso
    #
    echo = `date` job $JOB_NAME done
    ```
-* Notes: Adapters are listed in the `TruSeq3-PE.fa` file. Trimmomatic commands like LEADING, TRAILING, SLIDINGWINDOW & MINLEN can be adjusted accordingy.
+* Notes: Adapters are listed in the `TruSeq3-PE.fa` file. Trimmomatic commands like LEADING, TRAILING, SLIDINGWINDOW & MINLEN can be adjusted accordingy. Check the job log file for the `TrimmomaticPE: Completed successfully` to be sure no error in the analysis.
+
+To evalute the trimmed reads, I used FASTQC application on Hydra using followin job file:
+   ```
+   # /bin/sh
+   # ----------------Parameters---------------------- #
+   #$ -S /bin/sh
+   #$ -q sThC.q
+   #$ -l mres=1G
+   #$ -cwd
+   #$ -j y
+   #$ -N fastqc-cael
+   #$ -o fastqc-cael.log
+   #
+   # ----------------Modules------------------------- #
+   module load bioinformatics/fastqc
+   #
+   # ----------------Your Commands------------------- #
+   #
+   echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+   #
+   fastqc ./Camptosema_ellipticum_forward_paired.fq.gz \
+
+   fastqc ./Camptosema_ellipticum_reverse_paired.fq.gz \
+   #
+   echo = `date` job $JOB_NAME done
+   ```
+* Check HTML file in local browser like Safari, Google Chrome.
