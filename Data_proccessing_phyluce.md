@@ -70,3 +70,4 @@ To trim adapters and low quality reads before assembly, phyluce's illumiprocesso
    #
    echo = `date` job $JOB_NAME done
    ```
+* Notes: Adapters are listed in the `TruSeq3-PE.fa` file. Trimmomatic commands like LEADING, TRAILING, SLIDINGWINDOW & MINLEN can be adjusted accordingy.
