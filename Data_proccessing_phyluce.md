@@ -72,7 +72,7 @@ To trim adapters and low quality reads before assembly, phyluce's illumiprocesso
    ```
 * Notes: Adapters are listed in the `TruSeq3-PE.fa` file. Trimmomatic commands like LEADING, TRAILING, SLIDINGWINDOW & MINLEN can be adjusted accordingy. Check the job log file for the `TrimmomaticPE: Completed successfully` to be sure no error in the analysis.
 
-To evalute the trimmed reads, I used FASTQC application on Hydra using followin job file:
+To evalute the trimmed reads, I used [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) application on Hydra using followin job file:
    ```
    # /bin/sh
    # ----------------Parameters---------------------- #
