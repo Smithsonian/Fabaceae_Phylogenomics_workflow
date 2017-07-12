@@ -1,0 +1,21 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -q sThC.q
+#$ -l mres=2G,h_data=2G,h_vmem=2G
+#$ -cwd
+#$ -j y
+#$ -N counts
+#$ -o counts.log
+#
+# ----------------Modules------------------------- #
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+#
+for f in *R1*_.fastq.gz; do
+   zcat "$f" | awk -v fn="$f" -v OFS='\t' 'END{print fn, int(NR/4)}'
+done > raw_reads_summary.txt
+#
+echo = `date` job $JOB_NAME done
