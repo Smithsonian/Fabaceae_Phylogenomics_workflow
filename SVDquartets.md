@@ -5,6 +5,7 @@
 
 You can invoke SVDquartets help by typing 'svdq ?' in the command line of PAUP.
 
+  '''
   paup> svdq ?;
 
   Usage: SVDQuartets [options...] ;
@@ -46,7 +47,7 @@ You can invoke SVDquartets help by typing 'svdq ?' in the command line of PAUP.
   lakeInvar       no|yes                            no
   frobDFile       <filename-for-Frobenius-dists>    (none)
                                                    *Option is nonpersistent
-
+'''
 
 
 
