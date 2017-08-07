@@ -49,11 +49,11 @@ You can invoke SVDquartets help by typing 'svdq ?' in the command line of PAUP.
                                                    *Option is nonpersistent
  ```
 
-Analysis with bootstrap:
+# Analysis with bootstrap:
 ```
 execute concatenated.nexus; SVDQuartets evalQuartets=all nthreads=12 seed=12345678 bootstrap=standard nrep=200
 ```
-Without bootstrapp, selecting "Show quartet scores":
+# Without bootstrapp, selecting "Show quartet scores":
 
 ```
 execute concatenated.nexus; SVDQuartets evalQuartets=all nthreads=12 seed=12345678 showScores=yes
