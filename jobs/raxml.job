@@ -1,0 +1,21 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 32-64
+#$ -q lThC.q
+#$ -cwd
+#$ -j y
+#$ -N raxml-concat
+#$ -o raxml-concat.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/raxml
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+raxmlHPC-PTHREADS-SSE3 -T $NSLOTS -x $RANDOM -p $RANDOM -N autoMR -f a bootstop­perms=500 -m GTRGAMMA -q part -s concatenated.phy -n raxml_output_
+#
+echo = `date` job $JOB_NAME done
