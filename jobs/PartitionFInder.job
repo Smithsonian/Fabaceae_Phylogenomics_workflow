@@ -1,0 +1,22 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 16-32
+#$ -q mThC.q
+#$ -l mres=4G,h_data=4G,h_vmem=4G
+#$ -cwd
+#$ -j y
+#$ -N pf
+#$ -o pf.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/partitionfinder
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+PartitionFinder.py pf --raxml -p $NSLOTS
+#
+echo = `date` job $JOB_NAME done
