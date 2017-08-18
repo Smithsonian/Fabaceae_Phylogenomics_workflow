@@ -3,7 +3,7 @@
 
 Remove files from current folder based on the list in a file 'file.txt'. Replace 'rm' with 'cp' for copy!
 ```
-while read -r f; do rm "$f"; done <paralog-genes.txt
+while read -r f; do rm "$f"; done <file.txt
 ```
 
 Submit many jobs at once to Hydra from current folder based on file extension
