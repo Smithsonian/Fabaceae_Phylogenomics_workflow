@@ -1,9 +1,9 @@
 # Useful one-liners
 * This list will be updated gradually!
 
-Remove files from current folder based on the list in a file 'file.txt'. Replace 'rm' with 'cp' for copy!
+Remove files from current folder based on the list in the file 'list.txt'. Replace 'rm' with 'cp' for copy!
 ```
-while read -r f; do rm "$f"; done <file.txt
+while read -r f; do rm "$f"; done <list.txt
 ```
 
 Submit many jobs at once to Hydra from current folder based on file extension
