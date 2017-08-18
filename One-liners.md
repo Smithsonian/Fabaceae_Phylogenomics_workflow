@@ -1,5 +1,5 @@
 # Useful one-liners
-* This list will be updated gradually!
+* This list will be updated gradually! *
 
 Remove files from current folder based on the list in a file 'file.txt'. Replace 'rm' with 'cp' for copy!
 ```
