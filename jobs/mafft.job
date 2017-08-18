@@ -1,0 +1,21 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 20-40
+#$ -q mThC.q
+#$ -l mres=2G,h_data=2G,h_vmem=2G
+#$ -cwd
+#$ -j y
+#$ -N mafft
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/mafft
+#
+# ----------------Your Commands------------------- #
+#
+
+echo + `date` $JOB_NAME started on $HOSTNAME in $QUEUE with jobID=$JOB_ID and taskID=$TASK_ID
+#
+mafft --localpair --maxiterate 1000 --thread $NSLOTS  $1 > $1.mafft
+#
+echo = `date` $JOB_NAME for taskID=$TASK_ID done.
