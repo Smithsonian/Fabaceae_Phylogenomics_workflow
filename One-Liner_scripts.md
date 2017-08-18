@@ -4,7 +4,8 @@ Remove files from current folder based on the list in a file 'file.txt'. Replace
 while read -r f; do rm "$f"; done <paralog-genes.txt
 ```
 
-Submit many jobs at once to Hydra from current folder based on file extension:
+Submit many jobs at once to Hydra from current folder based on file extension
+
 MAFFT:
 ```
 for file in *.FNA; do qsub -o mafft-$file.log mafft.job $file; done
