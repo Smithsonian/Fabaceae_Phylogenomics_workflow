@@ -71,10 +71,10 @@ To trim adapters and low quality reads before assembly, phyluce's illumiprocesso
    echo = `date` job $JOB_NAME done
    ```
 * Notes: Adapters are listed in the `TruSeq3-PE.fa` file. Trimmomatic commands like LEADING, TRAILING, SLIDINGWINDOW & MINLEN can be adjusted accordingy. 
-LEADING:5 Remove leading low quality or N bases (below quality 5)
-TRAILING:15 Remove trailing low quality or N bases (below quality 15)
-SLIDINGWINDOW:4:15 Scan the read with a 4-base wide sliding window, cutting when the average quality per base drops below 15
-MINLEN:36 Drop reads below the 36 bases long
+* LEADING:5 Remove leading low quality or N bases (below quality 5)
+* TRAILING:15 Remove trailing low quality or N bases (below quality 15)
+* SLIDINGWINDOW:4:15 Scan the read with a 4-base wide sliding window, cutting when the average quality per base drops below 15
+* MINLEN:36 Drop reads below the 36 bases long
 
 Check the job log file for the `TrimmomaticPE: Completed successfully` to be sure no error in the analysis.
 
