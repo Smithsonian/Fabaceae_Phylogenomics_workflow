@@ -106,7 +106,7 @@ To evalute the trimmed reads, I used [FASTQC](https://www.bioinformatics.babraha
    ```
 * Check HTML output file in the local browser like Safari, Google Chrome.
 ### 3. Running HybPiper pipeline
-[HybPiper](https://github.com/mossmatters/HybPiper) is a suite of Python scripts that uses bioinformatics tools in order to extract target sequences from target-enriched reads. All bioinformatics modules need to be loaded via job file. The 'all-genes.fas' is a reference sequences that probes (baits) designed based upon it and HybPiper will map reads to this reference.
+[HybPiper](https://github.com/mossmatters/HybPiper) is a suite of Python scripts that uses bioinformatics tools in order to extract target sequences from target-enriched reads. All bioinformatics modules need to be loaded via job file. The 'all-genes.fas' is a reference sequences that probes (baits) designed based upon it and HybPiper will map reads to this reference. Sine the pipeline use SPAdes assembler, the job file set to run in the high memory nodes (himem). Maximum CPU in this case is 16.
 
 ```
 # /bin/sh
