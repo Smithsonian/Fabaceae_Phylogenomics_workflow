@@ -1,6 +1,6 @@
 Data proccessing
 ------------------------
-Following steps are meant to be run on the Smithsonian Institution HPC (Hydra) following the instructions [here](https://github.com/SmithsonianWorkshops/Targeted_Enrichment/blob/master/phyluce.md) with some tweaks myself. Original tutorial is in the Brant Faircloth's website: http://phyluce.readthedocs.org/en/latest/tutorial-one.html
+Following steps are meant to be run on the Smithsonian Institution HPC (Hydra) following the instructions [here](https://github.com/SmithsonianWorkshops/Targeted_Enrichment/blob/master/phyluce.md) with some tweaks myself.
 
 ### 1. Count raw reads 
 * This script reads fastq files in gzip format and counts 1/4 of lines as a number of raw reads per file. Use gzcat or zcat based on the Linux distro (gzcat works fine in macOS). Summary of the reads will be written to the `tab-delimited` txt file. If you have paired-end data, (R2 files), numbers will be the same with the R1.
