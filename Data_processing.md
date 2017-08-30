@@ -105,3 +105,35 @@ To evalute the trimmed reads, I used [FASTQC](https://www.bioinformatics.babraha
    echo = `date` job $JOB_NAME done
    ```
 * Check HTML output file in the local browser like Safari, Google Chrome.
+### 3. Running HybPiper pipeline
+[HybPiper](https://github.com/mossmatters/HybPiper) is a suite of Python scripts that uses bioinformatics tools in order to extract target sequences from target-enriched sequence reads. All bioinformatics modules need to be loaded via job file.
+
+```
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 16
+#$ -q mThM.q
+#$ -l mres=24G,h_data=24G,h_vmem=24G,himem
+#$ -cwd
+#$ -j y
+#$ -N Camptosema
+#$ -o Camptosema.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/biopython
+module load bioinformatics/blast
+module load bioinformatics/bwa
+module load bioinformatics/spades/3.10.1
+module load bioinformatics/exonerate
+module load bioinformatics/samtools
+module load tools/gnuparallel/20160422
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+./reads_first.py -b all-genes.fas -r raw-reads/Camptosema_ellipticum_R*.fastq --prefix Camptosema_ellipticum --bwa --cpu $NSLOTS
+#
+echo = `date` job $JOB_NAME done
+```
