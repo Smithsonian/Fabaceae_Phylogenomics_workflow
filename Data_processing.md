@@ -137,4 +137,4 @@ echo + NSLOTS = $NSLOTS
 #
 echo = `date` job $JOB_NAME done
 ```
-If you want to recover  Chloroplast or Mitochondrial genes, use their genomes as a reference. 
+If you want to recover  Chloroplast or Mitochondrial genes, use their genomes as a reference. I used soybean Chloroplast genome (GenBank:DQ317523) as a reference.
