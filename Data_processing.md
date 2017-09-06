@@ -139,11 +139,11 @@ echo = `date` job $JOB_NAME done
 ```
 If you want to recover  Chloroplast or Mitochondrial genes, use their genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference.
 ### 4. Species tree reconstruction
-There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree. `-i` input file, each gene tree on a separate line. To run ASTRAL, you need to have Java.
+There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree. `-i` input file, each gene tree on a separate line in newick format. To run ASTRAL, you need to have Java.
 ```
 java -jar astral.5.5.2.jar -i genetrees.tre -o genetrees-astral.tre 2> astral.log
 ```
-Use `-q` option to get the scores for the quartets in each node. You can use `-t` option too (e.g. -t 2, -2 4 ...).
+Use `-q` option to get the scores for the quartets in each node. You can use `-t` option too (e.g. -t 2, -t 4 ...).
 ```
 java -jar astral.5.5.2.jar -q genetrees-astral.tre -i genetrees.tre -o genetrees-astral-scored.tre 2> astral-scored.log
 ```
