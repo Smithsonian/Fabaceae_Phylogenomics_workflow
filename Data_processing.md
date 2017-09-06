@@ -138,3 +138,13 @@ echo + NSLOTS = $NSLOTS
 echo = `date` job $JOB_NAME done
 ```
 If you want to recover  Chloroplast or Mitochondrial genes, use their genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference.
+### 4. Species tree reconstruction
+Using [ASTRAL](https://github.com/smirarab/ASTRAL) to get species tree from gene trees. Gene trees obtained from the RAxML. '-i' input file, each gene tree on a separate line
+```
+java -jar astral.5.5.2.jar -i 506genetrees.tre -o 506genetrees-astral.tre 2> astral.log
+```
+Use '-q' option to get the scores for the quartets in each node.
+```
+java -jar astral.5.5.2.jar -q 506genetrees-astral.tre -i 506genetrees.tre -o 506genetrees-astral-scored.tre 2> astral-scored.log
+```
+
