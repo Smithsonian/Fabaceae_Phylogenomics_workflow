@@ -1,6 +1,6 @@
 Data proccessing
 ------------------------
-Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). For more information on how to submit jobs to the Hydra cluster see the instructions [here](https://github.com/SmithsonianWorkshops/Hydra-workshop).
+Following steps are meant to be run on the Smithsonian Institution HPC (Hydra) using [HybPiper](https://github.com/mossmatters/HybPiper) pipeline. For more information on how to submit jobs to the Hydra cluster see the instructions [here](https://github.com/SmithsonianWorkshops/Hydra-workshop).
 
 ### 1. Count raw reads 
 * This script reads fastq files in gzip format and counts 1/4 of lines as a number of raw reads per file. Use gzcat or zcat based on the Linux distro (gzcat works fine in macOS). Summary of the reads will be written to the `tab-delimited` txt file.
