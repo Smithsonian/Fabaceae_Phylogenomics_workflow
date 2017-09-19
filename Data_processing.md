@@ -150,10 +150,12 @@ java -jar astral.5.5.2.jar -q genetrees-astral.tre -i genetrees.tre -o genetrees
 Check the .log file, to see how many trees have missing taxa. Also, check "normalized quartet score," which vary between 0-1, the higher score represents less discordant on gene trees. However, this is not a direct assessment of the discordance on each node among gene trees! 
 
 ### 5. Get summary of the targeted genes using the [AMAS](https://github.com/marekborowiec/AMAS). 
+
+The following command write alignments summary such as alignments length, variable sites, etc in the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or aa (for amino acid), `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed, `python3` is calling Python 3.
+
 ```
 python3 ./AMAS.py summary -f fasta -d dna -i *.fas -c 6
 ```
-This command write alignments summary such as alignments length, variable sites, etc in the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or aa (for amino acid), `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed, `python3` is calling Python 3.
 
 ### 6. Assessing Paralogs
 
