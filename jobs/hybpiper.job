@@ -22,6 +22,6 @@ module load tools/gnuparallel/20160422
 echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
 echo + NSLOTS = $NSLOTS
 #
-./reads_first.py -b all-genes.fas -r raw-reads/Camptosema_ellipticum_R*.fastq --prefix Camptosema_ellipticum --bwa --cpu $NSLOTS
+python ./reads_first.py -b all-genes.fas -r raw-reads/Camptosema_ellipticum_R*.fastq --prefix Camptosema_ellipticum --bwa --cpu $NSLOTS
 #
 echo = `date` job $JOB_NAME done
