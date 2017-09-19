@@ -154,3 +154,10 @@ Check the .log file, to see how many trees have missing taxa. Also, check "norma
 python3 ./AMAS.py summary -f fasta -d dna -i *.fas -c 6
 ```
 This command write alignments summary such as alignments length, variable sites, etc in the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or aa (for amino acid), `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed, `python3` is calling Python 3.
+
+### 6. Obtain paralogs for all genes
+HybPiper includes the script `paralog_retriever.py` which collect all paralogs from each sample in `name.txt`, along with all coding sequences from samples without paralogs. If you have a list of genes `gene-list.txt` for which you want to assess paralogs, you can use GNU Parallel with this command:
+
+```
+cat gene-list.txt | parallel -k "python ./paralog_retriever.py name.txt {} > {}.paralogs.fasta" 2> paralogs.txt
+```
