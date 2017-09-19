@@ -3,8 +3,7 @@ Data proccessing
 Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). For more information on how to submit jobs to the Hydra cluster see the instructions [here](https://github.com/SmithsonianWorkshops/Hydra-workshop).
 
 ### 1. Count raw reads 
-* This script reads fastq files in gzip format and counts 1/4 of lines as a number of raw reads per file. Use gzcat or zcat based on the Linux distro (gzcat works fine in macOS). Summary of the reads will be written to the `tab-delimited` txt file. If you have paired-end data, (R2 files), numbers will be the same with the R1.
-
+* This script reads fastq files in gzip format and counts 1/4 of lines as a number of raw reads per file. Use gzcat or zcat based on the Linux distro (gzcat works fine in macOS). Summary of the reads will be written to the `tab-delimited` txt file.
    ```
    for f in *R1*_.fastq.gz; do
       zcat "$f" | awk -v fn="$f" -v OFS='\t' 'END{print fn, int(NR/4)}'
@@ -44,7 +43,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
    AE111_R1.fastq.gz    5635389
    ```
 ### 2. Trimming adapters and low quality reads
-To trim adapters and low quality reads before assembly, phyluce's illumiprocessor were used which instead of [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic), runs [Trim Galore!](https://www.bioinformatics.babraham.ac.uk/projects/trim_galore/) because of better capiblity on Hydra. However, in my dataset, Trimmomatic seems to work better, so I'll use Trimmomatic independently using following job file:
+To trim adapters and low quality reads before assembly, I'll use Trimmomatic using following job file:
 
    ```
    # /bin/sh
