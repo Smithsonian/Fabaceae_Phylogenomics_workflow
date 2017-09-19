@@ -153,4 +153,4 @@ Check the .log file, to see how many trees have missing taxa. Also, check "norma
 ```
 python3 ./AMAS.py summary -f fasta -d dna -i *.fas -c 6
 ```
-This command write alignments summary such as alignments length, variable sites, etc in the `summary.txt` file. `-f` input file format in fasta, or phylip, `-d` dna or aa (for amino acid), `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed, `python3` is calling Python 3.
+This command write alignments summary such as alignments length, variable sites, etc in the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or aa (for amino acid), `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed, `python3` is calling Python 3.
