@@ -78,7 +78,7 @@ To trim adapters and low quality reads before assembly, I'll use Trimmomatic usi
 
 Check the job log file for the `TrimmomaticPE: Completed successfully` to be sure no error in the analysis.
 
-To evalute the trimmed reads, I used [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) application on Hydra using followin job file:
+To evalute the trimmed reads, use [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) application following this job file:
    ```
    # /bin/sh
    # ----------------Parameters---------------------- #
