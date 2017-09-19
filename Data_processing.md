@@ -1,6 +1,6 @@
-Data proccessing
+Target-enrichment data proccessing
 ------------------------
-Following steps are meant to be run on the Smithsonian Institution HPC (Hydra) using [HybPiper](https://github.com/mossmatters/HybPiper) pipeline. For more information on how to submit jobs to the Hydra cluster see the instructions [here](https://github.com/SmithsonianWorkshops/Hydra-workshop).
+Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). For more information on how to submit jobs to the Hydra cluster see the instructions [here](https://github.com/SmithsonianWorkshops/Hydra-workshop).
 
 ### 1. Count raw reads 
 * This script reads fastq files in gzip format and counts 1/4 of lines as a number of raw reads per file. Use gzcat or zcat based on the Linux distro (gzcat works fine in macOS). Summary of the reads will be written to the `tab-delimited` txt file.
@@ -104,6 +104,7 @@ To evalute the trimmed reads, use [FASTQC](https://www.bioinformatics.babraham.a
    echo = `date` job $JOB_NAME done
    ```
 * Check HTML output file in the local browser like Safari, Google Chrome.
+
 ### 3. Running HybPiper pipeline
 [HybPiper](https://github.com/mossmatters/HybPiper) is a suite of Python scripts that uses bioinformatics tools in order to extract target sequences from target-enriched reads. All bioinformatics modules need to be loaded via job file. The 'all-genes.fas' is a reference sequences that probes (baits) designed based upon it and HybPiper will map reads to this reference. Sine the pipeline use SPAdes assembler, the job file set to run in the high memory nodes (himem). Maximum CPU in this case is 16. It's possible to use Velvet assembler instead of SPAdes. I used SPAdes in this example.
 
