@@ -16,6 +16,6 @@ module load bioinformatics/raxml
 echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
 echo + NSLOTS = $NSLOTS
 #
-raxmlHPC-PTHREADS-SSE3 -T $NSLOTS -x $RANDOM -p $RANDOM -N autoMR -f a bootstop­perms=500 -m GTRGAMMA -q part -s concatenated.phy -n raxml_output_
+raxmlHPC-PTHREADS-SSE3 -T $NSLOTS -x $RANDOM -p $RANDOM -N autoMR -f a bootstop­perms=500 -m GTRGAMMA -q part -s concatenated.phy -n raxml
 #
 echo = `date` job $JOB_NAME done
