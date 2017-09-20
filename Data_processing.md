@@ -65,7 +65,7 @@ To trim adapters and low quality reads before assembly, I'll use Trimmomatic usi
    echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
    echo + NSLOTS = $NSLOTS
    #
-   runtrimmomatic PE -threads 48 Camptosema_ellipticum_TTGCGAGA_L001_R1.fastq.gz Camptosema_ellipticum_TTGCGAGA_L001_R2.fastq.gz Camptosema_ellipticum_forward_paired-new.fq.gz Camptosema_ellipticum_forward_unpaired-new.fq.gz Camptosema_ellipticum_reverse_paired-new.fq.gz Camptosema_ellipticum_reverse_unpaired-new.fq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:5 TRAILING:15 SLIDINGWINDOW:4:15 MINLEN:36
+   runtrimmomatic PE -threads $NSLOTS Camptosema_ellipticum_TTGCGAGA_L001_R1.fastq.gz Camptosema_ellipticum_TTGCGAGA_L001_R2.fastq.gz Camptosema_ellipticum_forward_paired-new.fq.gz Camptosema_ellipticum_forward_unpaired-new.fq.gz Camptosema_ellipticum_reverse_paired-new.fq.gz Camptosema_ellipticum_reverse_unpaired-new.fq.gz ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:5 TRAILING:15 SLIDINGWINDOW:4:15 MINLEN:36
    #
    echo = `date` job $JOB_NAME done
    ```
