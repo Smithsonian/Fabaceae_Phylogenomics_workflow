@@ -138,6 +138,34 @@ echo + NSLOTS = $NSLOTS
 echo = `date` job $JOB_NAME done
 ```
 If you want to recover  Chloroplast or Mitochondrial genes, use `./reads_first.py' same as above, but organellar genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference.
+
+## Geting supercontig sequences
+Supercontigs are sequences of exons and itrons.
+You need to run job file from the direcorty which output folder of HybPiper loacated. In this example, current direcorty `.`.
+
+```
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -q sThC.q
+#$ -cwd
+#$ -j y
+#$ -N targets
+#$ -o targets.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/biopython
+module load bioinformatics/samtools
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+#
+python ./retrieve_sequences.py ./all-genes.fas . supercontig
+#
+echo = `date` job $JOB_NAME done
+```
+
 ### 4. Species tree reconstruction
 There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree. `-i` input file, each gene tree on a separate line in newick format. To run ASTRAL, you need to have Java.
 ```
