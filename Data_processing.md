@@ -165,6 +165,7 @@ python ./retrieve_sequences.py ./all-genes.fas . supercontig
 #
 echo = `date` job $JOB_NAME done
 ```
+If you want exon only sequences, use `dna` instead of `supercontig`.
 
 ### 4. Species tree reconstruction
 There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree. `-i` input file, each gene tree on a separate line in newick format. To run ASTRAL, you need to have Java.
