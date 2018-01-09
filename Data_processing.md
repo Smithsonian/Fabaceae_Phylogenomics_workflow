@@ -2,7 +2,7 @@ Target-enrichment data proccessing
 ------------------------
 Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). For more information on how to submit jobs to the Hydra cluster see the instructions [here](https://github.com/SmithsonianWorkshops/Hydra-workshop).
 
-### 1. Count raw reads 
+### 1. Count raw reads (optional!)
 * This script reads fastq files in gzip format and counts 1/4 of lines as a number of raw reads per file. Use gzcat or zcat based on the Linux distro (gzcat works fine in macOS). Summary of the reads will be written to the `tab-delimited` txt file.
    ```
    for f in *R1*_.fastq.gz; do
@@ -106,7 +106,7 @@ To evalute the trimmed reads, use [FASTQC](https://www.bioinformatics.babraham.a
 * Check HTML output file in the local browser like Safari, Google Chrome.
 
 ### 3. Running HybPiper pipeline
-[HybPiper](https://github.com/mossmatters/HybPiper) is a suite of Python scripts that uses bioinformatics tools in order to extract target sequences from target-enriched reads. All bioinformatics modules need to be loaded via job file. The 'all-genes.fas' is a reference sequences that probes (baits) designed based upon it and HybPiper will map reads to this reference. Sine the pipeline use SPAdes assembler, the job file set to run in the high memory nodes (himem). Maximum CPU in this case is 16. It's possible to use Velvet assembler instead of SPAdes. I used SPAdes in this example.
+[HybPiper](https://github.com/mossmatters/HybPiper) is a suite of Python scripts that uses bioinformatics tools in order to extract target sequences from target-enriched reads. All bioinformatics modules need to be loaded via job file. The 'all-genes.fas' is a reference sequences that probes (baits) designed based upon it and HybPiper will map reads to this reference. It requires to be in a specific format. Sine the pipeline use SPAdes assembler, the job file set to run in the high memory nodes (himem). Maximum CPU in this case is 16. It's possible to use Velvet assembler instead of SPAdes. I used SPAdes in this example.
 
 ```
 # /bin/sh
@@ -179,7 +179,7 @@ Check the .log file, to see how many trees have missing taxa. Also, check "norma
 
 ### 5. Get summary of the targeted genes using the [AMAS](https://github.com/marekborowiec/AMAS). 
 
-The following command write alignments summary such as alignments length, variable sites, etc in the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or aa (for amino acid), `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed, `python3` is calling Python 3.
+The following command write alignments summary such as alignments length, variable sites, etc to the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or `-aa` for amino acid, `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed, `python3` is calling Python 3.
 
 ```
 python3 ./AMAS.py summary -f fasta -d dna -i *.fas -c 6
