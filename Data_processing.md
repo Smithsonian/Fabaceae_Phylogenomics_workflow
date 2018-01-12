@@ -137,7 +137,7 @@ echo + NSLOTS = $NSLOTS
 #
 echo = `date` job $JOB_NAME done
 ```
-If you want to recover  Chloroplast or Mitochondrial genes, use `./reads_first.py' same as above, but organellar genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference. Use mitochondrial genome of soybean or common bean to recover mitochondrial genome.
+If you want to recover  Chloroplast or Mitochondrial genes, use `./reads_first.py' same as above, but organellar genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference. Use mitochondrial genome of soybean, common bean or the closest lineage to recover mitochondrial genome too.
 
 ## Geting supercontig sequences
 Supercontigs are sequences of exons and introns. After mapping the reads to the reference, you can obtain those target sequences (targeted genes) using following job file. You need to run job file from the directory where output folder of HybPiper located. In this example, current directory `.`. If you want exon only sequences, use `dna` instead of `supercontig`.
