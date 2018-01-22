@@ -5,7 +5,7 @@ The SVDquartets infers relationships among quartets of taxa under the coalescent
 1. PAUP. You can obtain free test version from [here](http://people.sc.fsu.edu/~dswofford/paup_test/). SVDquartets implemented in the PAUP.
 2. Data file in the nexus format with the partition blocks! An example of nexus file with partitions can be obtained from [here](http://www.stat.osu.edu/~lkubatko/data-snakes.nex) from Kubatko et al. (Syst. Biol. 60(4): 393-409, 2011).
 
-You can invoke SVDquartets help by typing 'svdq ?' in the command line of PAUP.
+You can invoke SVDquartets help by typing `svdq ?` in the command line of PAUP.
 
 ```
   paup> svdq ?;
