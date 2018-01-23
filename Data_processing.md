@@ -138,8 +138,30 @@ echo + NSLOTS = $NSLOTS
 echo = `date` job $JOB_NAME done
 ```
 If you want to recover  Chloroplast or Mitochondrial genes, use `./reads_first.py' same as above, but organellar genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference. Use mitochondrial genome of soybean, common bean or the closest lineage to recover mitochondrial genome too.
-## Geting targeted loci recovery
-Using `get_seq_lengths.py' script you can get an idea of how many targeted genes are recovered. Then you can make a heatmap using `gene_recovery_heatmap.R` script in R. For more detail see [here](https://github.com/mossmatters/HybPiper/wiki/Tutorial).
+## Targeted loci recovery heatmap
+Using `get_seq_lengths.py` script you can get an idea of how many targeted genes are recovered. Then you can make a heatmap using `gene_recovery_heatmap.R` script in R and `seq_lengths.txt`. For more detail see [here](https://github.com/mossmatters/HybPiper/wiki/Tutorial).
+
+```
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -q sThC.q
+#$ -cwd
+#$ -j y
+#$ -N seq_lengths
+#$ -o seq_lengths.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/biopython
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+#
+python ./get_seq_lengths.py all-genes.fas namelist.txt dna > seq_lengths.txt
+#
+echo = `date` job $JOB_NAME done
+```
 
 ## Geting supercontig sequences
 Supercontigs are sequences of exons and introns. After mapping the reads to the reference, you can obtain those target sequences (targeted genes) using following job file. You need to run job file from the directory where output folder of HybPiper located. In this example, current directory `.`. If you want exon only sequences, use `dna` instead of `supercontig`.
