@@ -1,0 +1,19 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -q sThC.q
+#$ -cwd
+#$ -j y
+#$ -N seq_lengths
+#$ -o seq_lengths.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/biopython
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+#
+python ./get_seq_lengths.py all-genes.fas namelist.txt dna > seq_lengths.txt
+#
+echo = `date` job $JOB_NAME done
