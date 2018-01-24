@@ -163,7 +163,8 @@ python ./get_seq_lengths.py all-genes.fas namelist.txt dna > seq_lengths.txt
 echo = `date` job $JOB_NAME done
 ```
 Here is a heatmap for 25 species using 507 targeted loci.
-(https://user-images.githubusercontent.com/13125143/35326179-c6a76388-00ed-11e8-957a-ac855fc31c1a.jpg)
+
+![example-heatmap](https://user-images.githubusercontent.com/13125143/35326179-c6a76388-00ed-11e8-957a-ac855fc31c1a.jpg)
 
 ## Geting supercontig sequences
 Supercontigs are sequences of exons and introns. After mapping the reads to the reference, you can obtain those target sequences (targeted genes) using following job file. You need to run job file from the directory where output folder of HybPiper located. In this example, current directory `.`. If you want exon only sequences, use `dna` instead of `supercontig`.
