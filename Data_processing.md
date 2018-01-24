@@ -162,7 +162,7 @@ python ./get_seq_lengths.py all-genes.fas namelist.txt dna > seq_lengths.txt
 #
 echo = `date` job $JOB_NAME done
 ```
-Here is a heatmap of recovered genes (X axis) for 25 species.
+Here is a heatmap of recovered genes (x axis) for 25 species.
 
 ![example-heatmap](https://user-images.githubusercontent.com/13125143/35326179-c6a76388-00ed-11e8-957a-ac855fc31c1a.jpg)
 
