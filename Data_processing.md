@@ -220,7 +220,7 @@ HybPiper includes the script `paralog_retriever.py` which collect all paralogs f
 cat gene-list.txt | parallel -k "python ./paralog_retriever.py name.txt {} > {}.paralogs.fasta" 2> paralogs.txt
 ```
 ### 7. Clean up
-Use `cleanup.py` script from HybPiper to remove thousands of unncessary files, mainly the output of SPAdes. There is file number limit on Hydra cluster for each user, so this job needs to be done.
+Use `cleanup.py` script from HybPiper to remove thousands of unncessary files, mainly the output of SPAdes assembler. There is a file number limit on Hydra cluster for each user, so this job needs to be done regularly.
 
 ```
 # /bin/sh
