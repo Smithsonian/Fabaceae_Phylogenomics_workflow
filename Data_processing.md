@@ -194,7 +194,7 @@ echo = `date` job $JOB_NAME done
 ```
 
 ### 4. Species tree reconstruction
-There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatinated into a single file by `cat` command, each gene tree on a separate line in newick format. `-i` input file, `-o` name of output file, `2>` writes stdout to the file (recommended). To run ASTRAL, you need to have Java.
+There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatinated into a single file by `cat` command, each gene tree on a separate line in newick format. `-i` input file, `-o` name of output file, `2>` writes stdout to the file (recommended). To run ASTRAL, you need to have [Java](https://java.com/).
 ```
 java -jar astral.5.5.2.jar -i genetrees.tre -o genetrees-astral.tre 2> astral.log
 ```
@@ -206,10 +206,10 @@ Check the .log file, to see how many trees have missing taxa. Also, check "norma
 
 ### 5. Get summary of the targeted genes using the [AMAS](https://github.com/marekborowiec/AMAS). 
 
-The following command write alignments summary such as alignments length, variable sites, etc to the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or `-aa` for amino acid, `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed, `python3` is calling Python 3.
+The following command write alignments summary such as alignments length, variable sites, etc to the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or `-aa` for amino acid, `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed. I recommend installing Python 3 using [Miniconda](https://conda.io/miniconda.html)
 
 ```
-python3 ./AMAS.py summary -f fasta -d dna -i *.fas -c 6
+python ./AMAS.py summary -f fasta -d dna -i *.fas -c 6
 ```
 
 ### 6. Assessing Paralogs
