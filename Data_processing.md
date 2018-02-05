@@ -219,3 +219,31 @@ HybPiper includes the script `paralog_retriever.py` which collect all paralogs f
 ```
 cat gene-list.txt | parallel -k "python ./paralog_retriever.py name.txt {} > {}.paralogs.fasta" 2> paralogs.txt
 ```
+### 7. Clean up
+Use `cleanup.py` script from HybPiper to remove thousands of unncessary files, mainly the output of SPAdes. There is file number limit on Hydra cluster for each user, so this job needs to be done.
+
+```
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 2
+#$ -q sThC.q
+#$ -cwd
+#$ -j y
+#$ -N cleanup
+#$ -o cleanup.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/biopython
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+
+python ./cleanup.py Camptosema_ellipticum
+
+#
+echo = `date` job $JOB_NAME done
+```
