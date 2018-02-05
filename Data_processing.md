@@ -206,7 +206,7 @@ Check the .log file, to see how many trees have missing taxa. Also, check "norma
 
 ### 5. Get summary of the targeted genes using the [AMAS](https://github.com/marekborowiec/AMAS). 
 
-The following command write alignments summary such as alignments length, variable sites, etc to the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or `-aa` for amino acid, `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed. I recommend installing Python 3 using [Miniconda](https://conda.io/miniconda.html)
+The following command write alignments summary such as alignments length, variable sites, etc to the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or `-aa` for amino acid, `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed. I recommend installing Python 3 using [Miniconda](https://conda.io/miniconda.html). Use `pip install biopython` to install Biopython.
 
 ```
 python ./AMAS.py summary -f fasta -d dna -i *.fas -c 6
