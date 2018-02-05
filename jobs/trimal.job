@@ -1,0 +1,21 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 8
+#$ -q mThC.q
+#$ -cwd
+#$ -j y
+#$ -N trimal
+#$ -o trimal.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/trimal
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+trimal -in $1 -out $1.trimal -gt 0.75
+#
+echo = `date` job $JOB_NAME done
