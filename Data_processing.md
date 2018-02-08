@@ -4,8 +4,8 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
 
 ### Short version
 
-1. Remove extra file names using `rename` or `mv` command (e.g. `for f in *.fastq.gz; do mv "$f" "${f/1760FL-/}"; done`)
-2. Rename the `fastqc.gz` files based on the species names using `mv` command
+1. Remove extra file names using `rename` or `mv` command if your data files are like this: `1760FL-02-14-167_S0_L006_R1_001.fastq.gz` (e.g. `for f in *.fastq.gz; do mv "$f" "${f/1760FL-02/}"; done`)
+2. Rename the `fastqc.gz` files based on the species names using `mv` command and name list
 3. Trim the files using `trimmomatic`
 4. Evaluate the reads using `fastqc`
 5. Unzip the files using `tar` or `gunzip`
