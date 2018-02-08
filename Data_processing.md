@@ -8,7 +8,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
 2. Rename the `fastqc.gz` files based on the species names using `mv` command and name list
 3. Trim the files using `trimmomatic`
 4. Evaluate the reads using `fastqc`
-5. Unzip the files using `tar` or `gunzip`
+5. Unzip the files using `tar` or `gunzip`. Use Pigz for pthreads.
 6. Run the main `HybPiper/reads_first.py` script using `while` command to run multiple files at once.
 7. Run the `HybPiper/retrieve_sequences.py` script to get genes sequences
 8. Run `mafft` to align the gene sequences
