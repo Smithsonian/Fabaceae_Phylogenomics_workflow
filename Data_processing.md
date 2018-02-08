@@ -2,20 +2,21 @@ Target-enrichment data proccessing
 ------------------------
 Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). For more information on how to submit jobs to the Hydra cluster see the instructions [here](https://github.com/SmithsonianWorkshops/Hydra-workshop).
 
-### Short version in list
+### Short version
 
-1. Remove extra file names using `rename` command (e.g. `for f in *.fastq.gz; do mv "$f" "${f/1760FL-/}"; done`)
+1. Remove extra file names using `rename` or `mv` command (e.g. `for f in *.fastq.gz; do mv "$f" "${f/1760FL-/}"; done`)
 2. Rename the `fastqc.gz` files based on the species names using `mv` command
-3. Trim the files using `trimmomatic` 
+3. Trim the files using `trimmomatic`
 4. Evaluate the reads using `fastqc`
-5. Unzip the files using `tar` command 
-6. Run the main `HybPiper/reads_first.py` script using while command to run multiple files at once.
+5. Unzip the files using `tar` or `gunzip`
+6. Run the main `HybPiper/reads_first.py` script using `while` command to run multiple files at once.
 7. Run the `HybPiper/retrieve_sequences.py` script to get genes sequences
 8. Run `mafft` to align the gene sequences
 9. Run `trimal` to trim the alignments
 10. Run `raxml` to generate phylogenetic trees
 11. Concat the gene trees using `cat` command
 12. Run `ASTRAL` to build the species tree
+
 
 
 ### 1. Count raw reads (optional!)
