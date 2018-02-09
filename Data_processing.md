@@ -154,7 +154,7 @@ echo + NSLOTS = $NSLOTS
 #
 echo = `date` job $JOB_NAME done
 ```
-To run the script in multiple samples, you can use this command and recal the sampels names from the file.
+To run the script in multiple samples, you can use this command and recal the sampels name from the file `namelist.txt`.
 
 `while read name; do ./reads_first.py -b all-genes.fas -r $name*.fastq --prefix $name --bwa --cpu $NSLOTS; done < namelist.txt`
 
