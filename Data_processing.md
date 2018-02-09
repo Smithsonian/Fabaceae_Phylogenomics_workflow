@@ -154,7 +154,13 @@ echo + NSLOTS = $NSLOTS
 #
 echo = `date` job $JOB_NAME done
 ```
+To run the script in multiple samples, you can use this command and recal the sampels names from the file.
+`while read name; do ./reads_first.py -b all-genes.fas -r $name*.fastq --prefix $name --bwa --cpu $NSLOTS; done < namelist.txt`
+
+
 If you want to recover  Chloroplast or Mitochondrial genes, use `./reads_first.py' same as above, but organellar genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference. Use mitochondrial genome of soybean, common bean or the closest lineage to recover mitochondrial genome too.
+
+
 ## Targeted loci recovery heatmap
 Using `get_seq_lengths.py` script you can get an idea of how many targeted genes are recovered. Then you can make a heatmap using `gene_recovery_heatmap.R` script in R and `seq_lengths.txt` output file. For more detail see [here](https://github.com/mossmatters/HybPiper/wiki/Tutorial).
 
