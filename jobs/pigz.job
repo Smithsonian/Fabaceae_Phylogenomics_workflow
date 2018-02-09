@@ -1,0 +1,21 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 12-40
+#$ -q mThC.q
+#$ -l mres=2G,h_data=2G,h_vmem=2G
+#$ -cwd
+#$ -j y
+#$ -N pigz
+#$ -o pigz.log
+#
+# ----------------Modules------------------------- #
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+#
+pigz -d -p $NSLOTS $1
+
+#
+echo = `date` job $JOB_NAME done
