@@ -10,11 +10,11 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
 4. Evaluate the reads using `fastqc`
 5. Unzip the files using `tar` or `gunzip`. For the large files, I recommend using [Pigz](https://www.zlib.net/pigz/) with pthreads option `-p` and sending as a job rather than unzipping from the login node.
 6. Run the main `HybPiper/reads_first.py` script using `while` command to run multiple files at once.
-7. Run the `HybPiper/retrieve_sequences.py` script to get genes sequences
-8. Run `mafft` to align the gene sequences
+7. Run the `HybPiper/retrieve_sequences.py` script to get gene sequences
+8. Run `mafft` to align the sequences
 9. Run `trimal` to trim the alignments
 10. Run `raxml` to generate phylogenetic trees
-11. Concat the gene trees using `cat` command
+11. Concat the gene trees using `cat` command, each tree in a seperate line.
 12. Run `ASTRAL` to build the species tree
 
 
