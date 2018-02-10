@@ -87,7 +87,7 @@ To trim adapters and low quality reads before assembly, I'll use Trimmomatic usi
    echo = `date` job $JOB_NAME done
    ```
 * Notes: Adapters are listed in the `TruSeq3-PE.fa` file. Trimmomatic commands like LEADING, TRAILING, SLIDINGWINDOW & MINLEN can be adjusted accordingy.
-* **ILLUMINACLIP:TruSeq3-PE.fa:2:30:10** Remove adapters using `TruSeq3-PE.f` file.
+* **ILLUMINACLIP:TruSeq3-PE.fa:2:30:10** Remove adapters using `TruSeq3-PE.fa` file.
 * **LEADING:5** Remove leading low quality or N bases (below quality 5)
 * **TRAILING:15** Remove trailing low quality or N bases (below quality 15)
 * **SLIDINGWINDOW:4:15** Scan the read with a 4-base wide sliding window, cutting when the average quality per base drops below 15
