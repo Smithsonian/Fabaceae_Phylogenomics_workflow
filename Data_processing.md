@@ -15,7 +15,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
 9. Run `trimal` to trim the alignments
 10. Run `raxml` to generate phylogenetic trees
 11. Concat the gene trees using `cat` command, each tree in a seperate line.
-12. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run from the local computer than sending job to the cluster.
+12. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it from the local computer rather than sending job to the cluster. It's very fast so you can run in the laptop too!
 
 
 
