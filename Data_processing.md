@@ -157,12 +157,12 @@ echo + NSLOTS = $NSLOTS
 #
 echo = `date` job $JOB_NAME done
 ```
-To run the script in multiple samples, you can use this command and recal the sampels name from the file `namelist.txt`.
+To run the script for multiple samples, you can use this command and recall the sampel names from the file `namelist.txt`.
 
 `while read name; do ./reads_first.py -b all-genes.fas -r $name*.fastq --prefix $name --bwa --cpu $NSLOTS; done < namelist.txt`
 
 
-If you want to recover  Chloroplast or Mitochondrial genes, use `./reads_first.py' same as above, but organellar genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference. Use mitochondrial genome of soybean, common bean or the closest lineage to recover mitochondrial genome too.
+If you want to recover  Chloroplast or Mitochondrial genes, use `./reads_first.py' same as above, but organellar genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference. Use mitochondrial genome of closest lineage to recover mitochondrial genome too.
 
 
 ## Targeted loci recovery heatmap
