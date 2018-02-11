@@ -60,7 +60,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
    AE111_R1.fastq.gz    5635389
    ```
 ### 2. Trimming adapters and low quality reads
-To trim adapters and low quality reads before assembly, I'll use Trimmomatic using following job file:
+Use Trimmomatic to trim adapters and low quality reads before assembly with following job file:
 
    ```
    # /bin/sh
@@ -86,7 +86,7 @@ To trim adapters and low quality reads before assembly, I'll use Trimmomatic usi
    #
    echo = `date` job $JOB_NAME done
    ```
-* Notes: Adapters are listed in the `TruSeq3-PE.fa` file. Trimmomatic commands like LEADING, TRAILING, SLIDINGWINDOW & MINLEN can be adjusted accordingy.
+* **Notes:** Adapters are listed in the `TruSeq3-PE.fa` file (adjsut accordingly for your platform). Trimmomatic commands like LEADING, TRAILING, SLIDINGWINDOW & MINLEN can be adjusted accordingy.
 * **ILLUMINACLIP:TruSeq3-PE.fa:2:30:10** Remove adapters using `TruSeq3-PE.fa` file.
 * **LEADING:5** Remove leading low quality or N bases (below quality 5)
 * **TRAILING:15** Remove trailing low quality or N bases (below quality 15)
