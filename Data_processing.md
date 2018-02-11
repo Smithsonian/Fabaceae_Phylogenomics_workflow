@@ -6,16 +6,16 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
 
 1. Remove extra file names using `rename` or `mv` command if your data files are like this: `1760FL-02-14-167_S0_L006_R1_001.fastq.gz` (e.g. `for f in *.fastq.gz; do mv "$f" "${f/1760FL-02/}"; done`)
 2. Rename the `fastqc.gz` files based on the species names using `mv` command and name list
-3. Trim the files using `trimmomatic` with `trimmomatic.job`
-4. Evaluate the reads using `fastqc` with `fastqc.job`
-5. Unzip the files using `tar` or `gunzip`. For the large files, I recommend using [Pigz](https://www.zlib.net/pigz/) with pthreads option `-p` and sending as job(s) rather than unzipping from the login node as it might slow down the login node.
-6. Run the main `HybPiper/reads_first.py` script using `while` command to run multiple files at once.
+3. Trim the files with `trimmomatic` using `trimmomatic.job`
+4. Evaluate the reads with `fastqc` using `fastqc.job`
+5. Unzip the files using `tar` or `gunzip`. For the large files, I recommend using [Pigz](https://www.zlib.net/pigz/) with pthreads option `-p` and sending job(s) rather than unzipping from the login node as it might slow down the login node.
+6. Run the `HybPiper/reads_first.py` script. Use `while` command to run multiple files at once.
 7. Run the `HybPiper/retrieve_sequences.py` script to get gene sequences
-8. Run `mafft` to align the sequences
-9. Run `trimal` to trim the alignments
-10. Run `raxml` to generate phylogenetic trees
+8. Run `mafft` to align the sequences.
+9. Run `trimal` to trim the alignments.
+10. Run `raxml` to generate gene trees.
 11. Concat the gene trees using `cat` command, each tree in a seperate line.
-12. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it from the local computer rather than sending job to the cluster. It's very fast so you can run in a laptop too!
+12. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it in the local computer rather than sending job to the cluster. It's very fast so you can run in a laptop too!
 
 
 
