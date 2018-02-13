@@ -10,12 +10,13 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
 4. Evaluate the reads with `fastqc` using `fastqc.job`
 5. Unzip the files using `tar` or `gunzip`. For the large files, I recommend using [Pigz](https://www.zlib.net/pigz/) with pthreads option `-p` and sending job(s) rather than unzipping from the login node as it might slow down the login node.
 6. Run the `HybPiper/reads_first.py` script. Use `while` command to run multiple files at once.
-7. Run the `HybPiper/retrieve_sequences.py` script to get gene sequences
-8. Run `MAFFT` to align the sequences.
-9. Run `TrimAl` to trim the alignments.
-10. Run `RAxML` to generate gene trees.
-11. Concat the gene trees using `cat` command, each tree in a seperate line.
-12. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it in the local computer rather than sending job to the cluster. It's very fast so you can run in a laptop too!
+7. Run the `intronerate.py` to get intron sequences.
+8. Run the `HybPiper/retrieve_sequences.py` script to get gene sequences
+9. Run `MAFFT` to align the sequences.
+10. Run `TrimAl` to trim the alignments.
+11. Run `RAxML` to generate gene trees.
+12. Concat the gene trees using `cat` command, each tree in a seperate line.
+13. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it in the local computer rather than sending job to the cluster. It's very fast so you can run in a laptop too!
 
 
 
