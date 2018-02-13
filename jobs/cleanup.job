@@ -1,0 +1,19 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -q sThC.q
+#$ -cwd
+#$ -j y
+#$ -N cleanup
+#$ -o cleanup.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/biopython
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+#
+python ./cleanup.py --prefix $1
+
+#
+echo = `date` job $JOB_NAME done
