@@ -13,7 +13,7 @@ module load bioinformatics/biopython
 #
 echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
 #
-python ./cleanup.py --prefix $1
+python ./cleanup.py Camptosema_ellipticum
 
 #
 echo = `date` job $JOB_NAME done
