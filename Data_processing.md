@@ -138,8 +138,8 @@ To evalute the trimmed reads, use [FASTQC](https://www.bioinformatics.babraham.a
 #$ -l mres=24G,h_data=24G,h_vmem=24G,himem
 #$ -cwd
 #$ -j y
-#$ -N Camptosema
-#$ -o Camptosema.log
+#$ -N reads_first
+#$ -o reads_first.log
 #
 # ----------------Modules------------------------- #
 module load bioinformatics/biopython
@@ -252,7 +252,7 @@ python ./intronerate.py --prefix Camptosema_ellipticum
 echo = `date` job $JOB_NAME done
 ```
 
-Here is an example of files for gene 14 after running intronerate. `gene14.FNA` contains nucleotide sequence of gene 14 that will be used in the subsequenct analysis (targeted sequence). `gene14.FAA` is amino acid sequence and `gene14_introns.fasta` intron sequence for gene 14. These folders will be empty if the gene didn't recovered by the pipeline. 
+Here is an example of files for gene 14 after running `reads_first.job` and `intronerate.job'. `gene14.FNA` contains nucleotide sequence of gene 14 that will be used in the subsequenct analysis (targeted sequence). `gene14.FAA` is amino acid sequence and `gene14_introns.fasta` intron sequence for gene 14. These folders will be empty if the gene didn't recovered by the pipeline. 
 
 ![gene-folder-structure](https://user-images.githubusercontent.com/13125143/36260813-676e23b0-125a-11e8-8e6d-efcb030daede.jpg)
 
