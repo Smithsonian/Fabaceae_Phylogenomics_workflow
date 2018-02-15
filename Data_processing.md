@@ -195,7 +195,7 @@ Here is a heatmap of recovered genes (x axis) for 25 species.
 ![example-heatmap](https://user-images.githubusercontent.com/13125143/35326179-c6a76388-00ed-11e8-957a-ac855fc31c1a.jpg)
 
 ## Geting supercontig sequences
-Supercontigs are sequences of exons and introns. After mapping the reads to the reference, you can obtain those target sequences (targeted genes) using following job file. You need to run job file from the directory where output folder of HybPiper located. In this example, current directory `.`. If you want exon only sequences, use `dna` instead of `supercontig`.
+HybPiper Supercontigs are sequences of exons and introns. After mapping the reads to the reference, you can obtain target sequences (targeted genes) using following job file. You need to run job file from the directory where output folder of HybPiper located. In this example, current directory `.`. If you want to get intron sequences as well, you need to run `intronerate.py` script then use `supercontig` instead of `dna`.
 
 
 ```
@@ -216,7 +216,38 @@ module load bioinformatics/samtools
 #
 echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
 #
-python ./retrieve_sequences.py ./all-genes.fas . supercontig
+python ./retrieve_sequences.py ./all-genes.fas . dna
+#
+echo = `date` job $JOB_NAME done
+```
+
+To obtain introns run this script in the folder where all your samples are located. Insted of 
+
+```
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -q sThC.q
+#$ -l mres=2G
+#$ -cwd
+#$ -j y
+#$ -N introns
+#$ -o introns.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/biopython
+module load bioinformatics/blast
+module load bioinformatics/bwa
+module load bioinformatics/spades/3.11.1
+module load bioinformatics/exonerate
+module load bioinformatics/samtools
+module load tools/gnuparallel/20160422
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+python ./intronerate.py --prefix $1
 #
 echo = `date` job $JOB_NAME done
 ```
