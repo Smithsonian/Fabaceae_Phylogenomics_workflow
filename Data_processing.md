@@ -195,7 +195,7 @@ Here is a heatmap of recovered genes (x axis) for 25 species.
 ![example-heatmap](https://user-images.githubusercontent.com/13125143/35326179-c6a76388-00ed-11e8-957a-ac855fc31c1a.jpg)
 
 ## Geting supercontig sequences
-HybPiper Supercontigs are sequences of exons and introns. After mapping the reads to the reference, you can obtain target sequences (targeted genes) using following job file. You need to run job file from the directory where output folder of HybPiper located. In this example, current directory `.`. If you want to get intron sequences as well, you need to run `intronerate.py` script then use `supercontig` instead of `dna`.
+After mapping the reads to the reference, you can obtain target sequences (targeted genes) using following job file. You need to run job file from the directory where output folder of HybPiper located. In this example, current directory `.`. If you want to get intron sequences as well, you need to run `intronerate.py`script (see below) and then use `supercontig` instead of `dna`.
 
 
 ```
@@ -221,7 +221,7 @@ python ./retrieve_sequences.py ./all-genes.fas . dna
 echo = `date` job $JOB_NAME done
 ```
 
-To obtain introns run this script in the folder where all your samples are located. Insted of 
+To obtain introns run this script in the folder where all your samples are located. 
 
 ```
 # /bin/sh
@@ -247,7 +247,7 @@ module load tools/gnuparallel/20160422
 echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
 echo + NSLOTS = $NSLOTS
 #
-python ./intronerate.py --prefix $1
+python ./intronerate.py --prefix Camptosema_ellipticum
 #
 echo = `date` job $JOB_NAME done
 ```
