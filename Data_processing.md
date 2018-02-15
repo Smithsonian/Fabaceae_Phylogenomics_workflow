@@ -254,7 +254,7 @@ echo = `date` job $JOB_NAME done
 
 Here is an example of files for gene 14 after running `reads_first.job` and `intronerate.job`. `gene14.FNA` contains nucleotide sequence (targeted sequence) of gene 14 that will be used in the subsequenct analysis. `gene14.FAA` is amino acid sequence and `gene14_introns.fasta` intron sequence for gene 14. These folders will be empty (such as gene 314) if the gene didn't recovered by the pipeline. 
 
-![gene-folder-structure](https://user-images.githubusercontent.com/13125143/36260813-676e23b0-125a-11e8-8e6d-efcb030daede.jpg)![unrecovered-gene](https://user-images.githubusercontent.com/13125143/36261605-cdfb7a72-125c-11e8-85d0-e4a97bdc5b84.jpg)
+![gene-folder-structure](https://user-images.githubusercontent.com/13125143/36260813-676e23b0-125a-11e8-8e6d-efcb030daede.jpg)   ![unrecovered-gene](https://user-images.githubusercontent.com/13125143/36261605-cdfb7a72-125c-11e8-85d0-e4a97bdc5b84.jpg)
 
 ### 4. Species tree reconstruction
 There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatinated into a single file by `cat` command, each gene tree on a separate line in newick format. `-i` input file, `-o` name of output file, `2>` writes stdout to the file (recommended). To run ASTRAL, you need to have [Java](https://java.com/).
