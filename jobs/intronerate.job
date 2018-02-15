@@ -1,0 +1,26 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -q sThC.q
+#$ -l mres=2G
+#$ -cwd
+#$ -j y
+#$ -N introns
+#$ -o introns.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/biopython
+module load bioinformatics/blast
+module load bioinformatics/bwa
+module load bioinformatics/spades/3.11.1
+module load bioinformatics/exonerate
+module load bioinformatics/samtools
+module load tools/gnuparallel/20160422
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+python ./intronerate.py --prefix Camptosema_ellipticum
+#
+echo = `date` job $JOB_NAME done
