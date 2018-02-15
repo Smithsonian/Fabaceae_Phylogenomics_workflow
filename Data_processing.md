@@ -194,7 +194,7 @@ Here is a heatmap of recovered genes (x axis) for 25 species. Heatmap obtained u
 
 ![example-heatmap](https://user-images.githubusercontent.com/13125143/35326179-c6a76388-00ed-11e8-957a-ac855fc31c1a.jpg)
 
-## Geting supercontig sequences
+## Geting targeted sequences
 After mapping the reads to the reference, you can obtain target sequences (targeted genes) using following job file. You need to run job file from the directory where output folder of HybPiper located. In this example, current directory `.`. If you want to get intron sequences as well, you need to run `intronerate.py`script (see below) and then use `supercontig` instead of `dna`.
 
 
@@ -251,6 +251,10 @@ python ./intronerate.py --prefix Camptosema_ellipticum
 #
 echo = `date` job $JOB_NAME done
 ```
+
+Here is an example of files for gene 14 after running intronerate.
+
+![gene-folder-structure](https://user-images.githubusercontent.com/13125143/36260813-676e23b0-125a-11e8-8e6d-efcb030daede.jpg)
 
 ### 4. Species tree reconstruction
 There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatinated into a single file by `cat` command, each gene tree on a separate line in newick format. `-i` input file, `-o` name of output file, `2>` writes stdout to the file (recommended). To run ASTRAL, you need to have [Java](https://java.com/).
