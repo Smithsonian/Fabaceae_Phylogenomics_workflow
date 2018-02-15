@@ -10,7 +10,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
 4. Evaluate the reads with `fastqc` using `fastqc.job`
 5. Unzip the files using `tar` or `gunzip`. For the large files, I recommend using [Pigz](https://www.zlib.net/pigz/) with pthreads option `-p` and sending job(s) rather than unzipping from the login node as it might slow down the login node.
 6. Run the `HybPiper/reads_first.py` script. Use `while` command to run multiple files at once.
-7. Run the `intronerate.py` to get intron sequences.
+7. Run the `HybPiper/intronerate.py` to get intron sequences.
 8. Run the `HybPiper/retrieve_sequences.py` script to get gene sequences
 9. Run `MAFFT` to align the sequences.
 10. Run `TrimAl` to trim the alignments.
