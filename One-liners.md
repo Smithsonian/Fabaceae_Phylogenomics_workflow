@@ -14,7 +14,6 @@ for file in *.FNA; do qsub -o mafft-$file.log mafft.job $file; done
 ```
 
 TrimAl:
-
 ```
 for file in *.mafft; do qsub -o trimal-$file.log trimal.job $file; done
 ```
