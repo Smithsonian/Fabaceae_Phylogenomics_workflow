@@ -256,7 +256,7 @@ Here is an example of files for gene 14 after running `reads_first.job` and `int
 
 ![gene-folder-structure](https://user-images.githubusercontent.com/13125143/36260813-676e23b0-125a-11e8-8e6d-efcb030daede.jpg)   ![unrecovered-gene](https://user-images.githubusercontent.com/13125143/36261605-cdfb7a72-125c-11e8-85d0-e4a97bdc5b84.jpg)
 
-After obtaining the target gene sequences, we need to align the sequences using multiple sequence alignment (MSA) programs. I use MAFFT (https://mafft.cbrc.jp/alignment/software/) by sending the following job to the Hydra.
+After obtaining the target gene sequences, we need to align them using multiple sequence alignment (MSA) programs such as MAFFT (https://mafft.cbrc.jp/alignment/software/) by sending the following job to the Hydra.
 
 ```
 # /bin/sh
@@ -287,10 +287,32 @@ Use this one line for loop to send jobs for as many files as you have in *.FNA f
 
 `for file in *.FNA; do qsub -o mafft-$file.log mafft.job $file; done`
 
+Then trim the alignments with [TrimAl](https://github.com/scapella/trimal) or your choice of trimmer such as Gblocks.
 
-
-
-
+```
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 8
+#$ -q mThC.q
+#$ -cwd
+#$ -j y
+#$ -N trimal
+#$ -o trimal.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/trimal
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+trimal -in $1 -out $1.trimal -gt 0.75
+#
+echo = `date` job $JOB_NAME done
+```
+`-gt` is the fraction of sequences with a gap allowed, default is 1.
 
 
 ### 4. Species tree reconstruction
