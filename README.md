@@ -1,5 +1,5 @@
 # Fabaceae phylogenomics workflow
-This repository contains instructions on handling target-enrichment (bait-capture) data using [HybPiper](https://github.com/mossmatters/HybPiper) and performing subsequent phylogenetic analyses on the Smithsonian Institution HPC (Hydra). If you don't have your own dataset, you can use tutorial data from [here](https://github.com/mossmatters/HybPiper/tree/master/test_dataset). Follow steps in the `Data_processing.md`.
+This repository contains instructions on handling target-enrichment (bait-capture) data using [HybPiper](https://github.com/mossmatters/HybPiper) and performing subsequent phylogenetic analyses on the Smithsonian Institution HPC (Hydra). If you don't have your own dataset, you can use tutorial data from [here](https://github.com/mossmatters/HybPiper/tree/master/test_dataset). Follow steps in the [Data_processing.md](https://github.com/Smithsonian/Fabaceae_Phylogenomics_workflow/blob/master/Data_processing.md).
 
 
 
