@@ -281,7 +281,7 @@ mafft --localpair --maxiterate 1000 --thread $NSLOTS  $1 > $1.mafft
 #
 echo = `date` $JOB_NAME for taskID=$TASK_ID done.
 ```
-`--localpair` uses the `L-INS-i` algorithm which probably is the most accurate; recommended for < 200 sequences (see more in MAFFT manual)
+`--localpair` uses the `L-INS-i` algorithm which probably is the most accurate; and recommended for < 200 sequences (for more see the MAFFT manual)
 
 Use this one line for loop to send jobs for as many files as you have in *.FNA format.
 
@@ -293,8 +293,7 @@ Then trim the alignments with [TrimAl](https://github.com/scapella/trimal) or yo
 # /bin/sh
 # ----------------Parameters---------------------- #
 #$ -S /bin/sh
-#$ -pe mthread 8
-#$ -q mThC.q
+#$ -q sThC.q
 #$ -cwd
 #$ -j y
 #$ -N trimal
