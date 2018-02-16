@@ -1,8 +1,7 @@
 # /bin/sh
 # ----------------Parameters---------------------- #
 #$ -S /bin/sh
-#$ -pe mthread 8
-#$ -q mThC.q
+#$ -q sThC.q
 #$ -cwd
 #$ -j y
 #$ -N trimal
