@@ -256,6 +256,43 @@ Here is an example of files for gene 14 after running `reads_first.job` and `int
 
 ![gene-folder-structure](https://user-images.githubusercontent.com/13125143/36260813-676e23b0-125a-11e8-8e6d-efcb030daede.jpg)   ![unrecovered-gene](https://user-images.githubusercontent.com/13125143/36261605-cdfb7a72-125c-11e8-85d0-e4a97bdc5b84.jpg)
 
+After obtaining the target gene sequences, we need to align the sequences using multiple sequence alignment (MSA) programs. I use MAFFT (https://mafft.cbrc.jp/alignment/software/) by sending the following job to the Hydra.
+
+```
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 4-12
+#$ -q mThC.q
+#$ -l mres=2G,h_data=2G,h_vmem=2G
+#$ -cwd
+#$ -j y
+#$ -N mafft
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/mafft
+#
+# ----------------Your Commands------------------- #
+#
+
+echo + `date` $JOB_NAME started on $HOSTNAME in $QUEUE with jobID=$JOB_ID and taskID=$TASK_ID
+#
+mafft --localpair --maxiterate 1000 --thread $NSLOTS  $1 > $1.mafft
+#
+echo = `date` $JOB_NAME for taskID=$TASK_ID done.
+```
+`--localpair` uses the `L-INS-i` algorithm which probably is the most accurate; recommended for < 200 sequences (see more in MAFFT manual)
+
+Use this one line for loop to send jobs for as many files as you have in *.FNA format.
+
+`for file in *.FNA; do qsub -o mafft-$file.log mafft.job $file; done`
+
+
+
+
+
+
+
 ### 4. Species tree reconstruction
 There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatinated into a single file by `cat` command, each gene tree on a separate line in newick format. `-i` input file, `-o` name of output file, `2>` writes stdout to the file (recommended). To run ASTRAL, you need to have [Java](https://java.com/).
 ```
