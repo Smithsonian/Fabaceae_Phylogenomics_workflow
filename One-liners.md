@@ -1,5 +1,5 @@
 # Useful one-liners
-* This list will be updated gradually!
+* This list will be updated gradually. See more intense bioinformatics one-liners at https://github.com/stephenturner/oneliners
 
 Remove files from current folder based on the list in 'list.txt'. Replace `rm` with `cp` for copy to another folder!
 ```
