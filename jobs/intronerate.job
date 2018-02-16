@@ -2,7 +2,7 @@
 # ----------------Parameters---------------------- #
 #$ -S /bin/sh
 #$ -q sThC.q
-#$ -l mres=2G
+#$ -l mres=1G
 #$ -cwd
 #$ -j y
 #$ -N introns
