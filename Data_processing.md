@@ -315,7 +315,7 @@ echo = `date` job $JOB_NAME done
 
 
 ### 4. Species tree reconstruction
-There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatinated into a single file by `cat` command, each gene tree on a separate line in newick format. `-i` input file, `-o` name of output file, `2>` writes stdout to the file (recommended). To run ASTRAL, you need to have [Java](https://java.com/).
+There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatinated into a single file by `cat` command, each gene tree on a separate line in newick format. `-i` input file, `-o` name of output file, `2>` writes stdout to the file (recommended). To run ASTRAL, you need to have [Java](https://java.com/). If your dataset is large, you can invoke more memory to run by ASTRAL with a command like this `-Xmx3000M` which request 3GB of RAM for the analysis to run.
 ```
 java -jar astral.5.5.2.jar -i genetrees.tre -o genetrees-astral.tre 2> astral.log
 ```
