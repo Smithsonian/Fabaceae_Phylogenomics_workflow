@@ -6,7 +6,7 @@ Remove files from current folder based on the list in 'list.txt'. Replace `rm` w
 while read -r f; do rm "$f"; done < list.txt
 ```
 
-Submit many jobs at once to Hydra from current folder based on file extension. Job files `mafft.job`, `trimal.job` and `raxml.job` required to be in the current directory, or give the PATH (e.g. `/my/another/folder/mafft.job`). `-o` is outout for the logs.
+Submit many jobs at once to cluster (Hydra) from current folder based on file extension. Job files `mafft.job`, `trimal.job` and `raxml.job` required to be in the current directory, or give the PATH (e.g. `/my/another/folder/mafft.job`). `-o` is outout for the logs.
 
 MAFFT:
 ```
