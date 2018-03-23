@@ -4,7 +4,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
 
 ### Short version
 
-1. [Optional] Remove extra text from file names using `rename` or `mv` command if your data files are like this: `1760FL-02-14-167_S0_L006_R1_001.fastq.gz` (e.g. `for f in *.fastq.gz; do mv "$f" "${f/1760FL-02/}"; done`)
+1. [Optional] Remove extra text from file names using `rename` or `mv` command if your data files look like this: `1760FL-02-14-167_S0_L006_R1_001.fastq.gz` (e.g. `for f in *.fastq.gz; do mv "$f" "${f/1760FL-02/}"; done`)
 2. Rename the `fastqc.gz` files based on the species/sample names using `mv` command and name list file.
 3. [Optional] Count raw reads.
 4. Trim the files with `trimmomatic` using `trimmomatic.job`
@@ -62,7 +62,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
    AE111_R1.fastq.gz    5635389
    ```
 ### 2. Trimming adapters and low quality reads
-Use Trimmomatic to trim adapters and low quality reads before assembly with following job file:
+I use Trimmomatic to trim adapters and low quality reads before assembly with following job file:
 
    ```
    # /bin/sh
