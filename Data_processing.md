@@ -5,7 +5,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
 ### Short version
 
 1. [Optional] Remove extra text from file names using `rename` or `mv` command if your data files look like this: `1760FL-02-14-167_S0_L006_R1_001.fastq.gz` (e.g. `for f in *.fastq.gz; do mv "$f" "${f/1760FL-02/}"; done`)
-2. Rename the `fastqc.gz` files based on the species/sample names using `mv` command and name list file.
+2. Rename the `fastq.gz` files based on the species/sample names using `mv` command and name list file.
 3. [Optional] Count raw reads.
 4. Trim the files with `trimmomatic` using `trimmomatic.job`
 5. Evaluate the reads with `fastqc` using `fastqc.job`. You can run `fastqc` before trimming to see the differences.
