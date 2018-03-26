@@ -16,8 +16,8 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
 10. Run `MAFFT` to align the sequences.
 11. Run `TrimAl` to trim the alignments.
 12. Run `RAxML` to generate gene trees.
-13. Concat the gene trees using `cat` command, each tree in a seperate line.
-14. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it in the local computer rather than sending job to the cluster. It's very fast so you can run in a laptop too!
+13. Concat the gene trees using `cat` command, each tree in a separate line.
+14. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it on the local computer rather than sending a job to the cluster. It's very fast so you can run on a laptop too!
 
 
 
@@ -28,7 +28,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
       zcat "$f" | awk -v fn="$f" -v OFS='\t' 'END{print fn, int(NR/4)}'
    done > raw_reads_summary.txt
    ```
-* This is a job file to submit to the Hydra:
+* Job file to submit to the Hydra:
 
    ```
    # /bin/sh
@@ -62,7 +62,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
    AE111_R1.fastq.gz    5635389
    ```
 ### 2. Trimming adapters and low quality reads
-I use Trimmomatic to trim adapters and low quality reads before assembly with following job file:
+I use Trimmomatic to trim adapters, and low quality reads before assembly with following job file:
 
    ```
    # /bin/sh
@@ -91,7 +91,7 @@ I use Trimmomatic to trim adapters and low quality reads before assembly with fo
    #
    echo = `date` job $JOB_NAME done
    ```
-* **Notes:** Adapters are listed in the `TruSeq3-PE.fa` file (adjsut accordingly for your platform). Trimmomatic commands like LEADING, TRAILING, SLIDINGWINDOW & MINLEN can be adjusted accordingy.
+* **Notes:** Adapters are listed in the `TruSeq3-PE.fa` file (adjust accordingly for your platform). Trimmomatic commands like LEADING, TRAILING, SLIDINGWINDOW & MINLEN can be adjusted accordingly.
 * **ILLUMINACLIP:TruSeq3-PE.fa:2:30:10** Remove adapters using `TruSeq3-PE.fa` file.
 * **LEADING:5** Remove leading low quality or N bases (below quality 5)
 * **TRAILING:15** Remove trailing low quality or N bases (below quality 15)
@@ -100,7 +100,7 @@ I use Trimmomatic to trim adapters and low quality reads before assembly with fo
 
 Check the job log file for the `TrimmomaticPE: Completed successfully` to be sure no error in the analysis.
 
-To evalute the trimmed reads, use [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) application following this job file:
+To evaluate the trimmed reads, use [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) application following this job file:
    ```
    # /bin/sh
    # ----------------Parameters---------------------- #
@@ -128,7 +128,7 @@ To evalute the trimmed reads, use [FASTQC](https://www.bioinformatics.babraham.a
 * Check HTML output file in a browser like Firefox.
 
 ### 3. Running HybPiper pipeline
-[HybPiper](https://github.com/mossmatters/HybPiper) is a suite of Python scripts that uses bioinformatics tools in order to extract target sequences from target-enriched reads. All bioinformatics modules need to be loaded via job file, or you can load them from the login node manually. The 'all-genes.fas' is a reference sequences that probes (baits) designed based upon it and HybPiper will map reads to this reference. It requires to be in a specific format. Sine the pipeline use SPAdes assembler, the job file set to run in the high memory nodes (himem). Maximum CPU in this case is 16. It's possible to use Velvet assembler instead of SPAdes. I used SPAdes in this example. In this step you need `fastq` files, so unzip them.
+[HybPiper](https://github.com/mossmatters/HybPiper) is a suite of Python scripts that use bioinformatics tools to extract target sequences from target-enriched reads. All bioinformatics modules need to be loaded via job file, or you can load them from the login node manually. The 'all-genes.fas' is a reference sequence that probes (baits) designed based upon it and HybPiper will map reads to this reference. It requires being in a specific format. Sine the pipeline use SPAdes assembler, the job file set to run in the high memory nodes (himem). Maximum CPU, in this case, is 16. It's possible to use Velvet assembler instead of SPAdes. I used SPAdes in this example. In this step you need `fastq` files.
 
 ```
 # /bin/sh
@@ -167,7 +167,7 @@ To run the script for multiple samples, you can use this command and recall the 
 
 
 ## Targeted loci recovery heatmap
-Using `get_seq_lengths.py` script you can get an idea of how many targeted genes are recovered. Then you can make a heatmap using `gene_recovery_heatmap.R` script in R and `seq_lengths.txt` output file. For more detail see [here](https://github.com/mossmatters/HybPiper/wiki/Tutorial).
+Using `get_seq_lengths.py` script you can get an idea of how many targeted genes are recovered. Then you can make a heat map using `gene_recovery_heatmap.R` script in R and `seq_lengths.txt` output file. For more detail see [here](https://github.com/mossmatters/HybPiper/wiki/Tutorial).
 
 ```
 # /bin/sh
@@ -252,7 +252,7 @@ python ./intronerate.py --prefix Camptosema_ellipticum
 echo = `date` job $JOB_NAME done
 ```
 
-Here is an example of files for gene 14 after running `reads_first.job` and `intronerate.job`. `gene14.FNA` contains nucleotide sequence (targeted sequence) of gene 14 that will be used in the subsequenct analysis. `gene14.FAA` is amino acid sequence and `gene14_introns.fasta` intron sequence for gene 14. These folders will be empty (such as gene 314) if the gene didn't recovered by the pipeline. 
+Here is an example of files for gene 14 after running `reads_first.job` and `intronerate.job`. `gene14.FNA` contains nucleotide sequence (targeted sequence) of gene 14 that will be used in the subsequent analysis. `gene14.FAA` is amino acid sequence and `gene14_introns.fasta` intron sequence for gene 14. These folders will be empty (such as gene 314) if the gene didn't recover by the pipeline. 
 
 ![gene-folder-structure](https://user-images.githubusercontent.com/13125143/36260813-676e23b0-125a-11e8-8e6d-efcb030daede.jpg)   ![unrecovered-gene](https://user-images.githubusercontent.com/13125143/36261605-cdfb7a72-125c-11e8-85d0-e4a97bdc5b84.jpg)
 
@@ -281,7 +281,7 @@ mafft --localpair --maxiterate 1000 --thread $NSLOTS  $1 > $1.mafft
 #
 echo = `date` $JOB_NAME for taskID=$TASK_ID done.
 ```
-`--localpair` uses the `L-INS-i` algorithm which probably is the most accurate; and recommended for < 200 sequences (for more see the MAFFT manual)
+`--localpair` uses the `L-INS-i` algorithm which probably is the most accurate, and recommended for < 200 sequences (for more see the MAFFT manual)
 
 Use this one line for loop to send jobs for as many files as you have in *.FNA format.
 
@@ -311,11 +311,11 @@ trimal -in $1 -out $1.trimal -gt 0.75
 #
 echo = `date` job $JOB_NAME done
 ```
-`-gt` is the fraction of sequences with a gap allowed, default is 1.
+`-gt` is the fraction of sequences with a gap allowed, the default is 1.
 
 
 ### 4. Species tree reconstruction
-There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatenated into a single file by `cat` command, each gene tree on a separate line in Newick format. `-i` input file, `-o` name of output file, `2>` writes stdout to the file (recommended). To run ASTRAL, you need to have [Java](https://java.com/). If your dataset is large, you can invoke more memory to run ASTRAL with option like this `-Xmx3000M` which requests 3GB of RAM. `Xmx` is the maximum amount you want to allocate in MB.
+There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatenated into a single file by `cat` command, each gene tree on a separate line in Newick format. `-i` input file, `-o` name of the output file, `2>` writes stdout to the file (recommended). To run ASTRAL, you need to have [Java](https://java.com/). If your dataset is large, you can invoke more memory to run ASTRAL with an option like `-Xmx3000M` which requests 3GB of RAM. `Xmx` is the maximum amount you want to allocate in MB.
 ```
 java -jar astral.5.5.2.jar -i genetrees.tre -o genetrees-astral.tre 2> astral.log
 ```
@@ -327,7 +327,7 @@ Check the .log file, to see how many trees have missing taxa. Also, check "norma
 
 ### 5. Get summary of the targeted genes using the [AMAS](https://github.com/marekborowiec/AMAS). 
 
-The following command write alignments summary such as alignments length, variable sites, etc to the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or `-aa` for amino acid, `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed. I recommend installing Python 3 using [Miniconda](https://conda.io/miniconda.html). Also use `pip install biopython` to install Biopython, which usually is the latest version.
+The following command writes alignments summary such as alignments length, variable sites, etc. to the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or `-aa` for amino acid, `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed. I recommend installing Python 3 using [Miniconda](https://conda.io/miniconda.html). Also use `pip install biopython` to install Biopython, which usually is the latest version.
 
 ```
 python ./AMAS.py summary -f fasta -d dna -i *.fas -c 6
@@ -341,7 +341,7 @@ HybPiper includes the script `paralog_retriever.py` which collect all paralogs f
 cat gene-list.txt | parallel -k "python ./paralog_retriever.py name.txt {} > {}.paralogs.fasta" 2> paralogs.txt
 ```
 ### 7. Clean up
-Use `cleanup.py` script from HybPiper to remove thousands of unncessary files, mainly the output of SPAdes assembler. There is a file number limit on Hydra cluster for each user, so this job needs to be done regularly.
+Use `cleanup.py` script from HybPiper to remove thousands of unnecessary files, mainly the output of SPAdes assembler. There is a file number limit on Hydra cluster for each user, so this job needs to be done regularly.
 
 ```
 # /bin/sh
