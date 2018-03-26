@@ -22,7 +22,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). 
 
 
 ### 1. Count raw reads (optional!)
-* This script reads fastq files in gzip format and counts 1/4 of lines as a number of raw reads per file. Use gzcat or zcat based on the Linux distro (gzcat works fine in macOS). Summary of the reads will be written to the `tab-delimited` txt file.
+* This script reads fastq files in gzip format and counts 1/4 of lines as a number of raw reads per file. Use gzcat or zcat based on the Linux distro (gzcat works fine in macOS). Summary of the reads will be written to the `tab-delimited` `raw_reads_summary.txt` file.
    ```
    for f in *R1*_.fastq.gz; do
       zcat "$f" | awk -v fn="$f" -v OFS='\t' 'END{print fn, int(NR/4)}'
