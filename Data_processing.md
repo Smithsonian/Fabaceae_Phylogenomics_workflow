@@ -1,24 +1,23 @@
 Target-enrichment data proccessing
 ------------------------
-Following steps are meant to be run on the Smithsonian Institution HPC (Hydra). For more information on how to submit jobs to the Hydra cluster see the instructions [here](https://github.com/SmithsonianWorkshops/Hydra-workshop).
+Following steps are meant to be run on the Smithsonian Institution HPC (Hydra cluster). For more information on how to submit jobs to the Hydra see the instructions [here](https://github.com/SmithsonianWorkshops/Hydra-workshop).
 
 ### Short version
 
-1. [Optional] Remove extra text from file names using `rename` or `mv` command if your data files look like this: `1760FL-02-14-167_S0_L006_R1_001.fastq.gz` (e.g. `for f in *.fastq.gz; do mv "$f" "${f/1760FL-02/}"; done`)
+1. [Optional] Remove extra text from file names using `rename` or `mv` command if your files look like this: `1760FL-02-14-167_S0_L006_R1_001.fastq.gz` (e.g. `for f in *.fastq.gz; do mv "$f" "${f/1760FL-02/}"; done`)
 2. Rename the `fastq.gz` files based on the species/sample names using `mv` command and name list file.
 3. [Optional] Count raw reads.
 4. Trim the files with `trimmomatic` using `trimmomatic.job`
 5. Evaluate the reads with `fastqc` using `fastqc.job`. You can run `fastqc` before trimming to check the differences.
 6. Unzip `fastqc.gz` files using `tar` or `gunzip`. For the large files, I recommend using [Pigz](https://www.zlib.net/pigz/) with pthreads option `-p` and sending job(s) rather than unzipping from the login node as it might slow down the login node.
-7. Run the `HybPiper/reads_first.py` script. Use `while` command to run on multiple samples.
-8. Run the `HybPiper/intronerate.py` to get intron sequences.
-9. Run the `HybPiper/retrieve_sequences.py` script to get gene sequences
-10. Run `MAFFT` to align the sequences.
-11. Run `TrimAl` to trim the alignments.
+7. Run the `HybPiper/reads_first.py` script. Use `while` loop to run on multiple samples.
+8. Run the `HybPiper/intronerate.py` script to get intron sequences.
+9. Run the `HybPiper/retrieve_sequences.py` script to get targeted gene sequences
+10. Run `MAFFT` to align sequences.
+11. Run `TrimAl` to trim alignments.
 12. Run `RAxML` to generate gene trees.
 13. Concat the gene trees using `cat` command, each tree in a separate line.
 14. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it on the local computer rather than sending a job to the cluster. It's very fast so you can run on a laptop too!
-
 
 
 ### 1. Count raw reads (optional!)
