@@ -319,13 +319,15 @@ To run trimAL on all files run this command:
 
 
 ### 4. Species tree reconstruction
-There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatenated into a single file by `cat` command, each gene tree on a separate line in Newick format. `-i` input file, `-o` name of the output file, `2>` writes stdout to the file (recommended). To run ASTRAL, you need to have [Java](https://java.com/). If your dataset is large, you can invoke more memory to run ASTRAL with an option like `-Xmx3000M` which requests 3GB of RAM. `Xmx` is the maximum amount you want to allocate in MB.
+There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatenated gene trees into a single file by `cat` command, each gene tree on a separate line in Newick format. 
+To run ASTRAL, you need to have [Java](https://java.com/). If your dataset is large, you can invoke more memory to run ASTRAL with an option like `-Xmx3000M` which requests 3GB of RAM. `Xmx` is the maximum amount you want to allocate in MB. `-i` input file, `-o` name of the output file, `2>` writes stdout to the file (recommended). 
+
 ```
-java -jar astral.5.5.2.jar -i genetrees.tre -o genetrees-astral.tre 2> astral.log
+java -jar astral.5.5.2.jar -i genetrees.tre -o speciestree-astral.tre 2> astral.log
 ```
 Use `-q` option to get the scores for the quartets in each node. You can use `-t` option too (e.g. -t 2, -t 4 ...).
 ```
-java -jar astral.5.5.2.jar -q genetrees-astral.tre -i genetrees.tre -o genetrees-astral-scored.tre 2> astral-scored.log
+java -jar astral.5.5.2.jar -q speciestree-astral.tre -i genetrees.tre -o speciestree-astral-scored.tre 2> astral-scored.log
 ```
 Check the .log file, to see how many trees have missing taxa. Also, check "normalized quartet score," which vary between 0-1, the higher score represents less discordant on gene trees. However, this is not a direct assessment of the discordance on each node among gene trees! 
 
