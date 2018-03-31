@@ -1,6 +1,6 @@
 Target-enrichment data proccessing
 ------------------------
-Following steps are meant to be run on the Smithsonian Institution HPC (Hydra cluster). For more information on how to submit jobs to the Hydra see the instructions [here](https://github.com/SmithsonianWorkshops/Hydra-workshop).
+Following steps are meant to be run on the Smithsonian Institution HPC (Hydra cluster). For more information on how to submit jobs to the Hydra see the instructions [here](https://github.com/SmithsonianWorkshops/Hydra-workshop). Hydra cluster runs [CentOS](https://www.centos.org/), a Linux distribution, so the Shell commands should run in other Linux distributions and macOS too. To run these instructions in Microsoft Windows, I recommend installing [Cygwin](http://www.cygwin.com/), a Unix emulator for Windows.
 
 ### Short version
 
