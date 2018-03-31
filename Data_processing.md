@@ -283,7 +283,7 @@ echo = `date` $JOB_NAME for taskID=$TASK_ID done.
 ```
 `--localpair` uses the `L-INS-i` algorithm which probably is the most accurate, and recommended for < 200 sequences (for more see the MAFFT manual)
 
-Use this one line for loop to send jobs for as many files as you have in *.FNA format.
+Use this for loop to send jobs for as many files as you have in `*.FNA` format.
 
 `for file in *.FNA; do qsub -o mafft-$file.log mafft.job $file; done`
 
@@ -312,6 +312,9 @@ trimal -in $1 -out $1.trimal -gt 0.75
 echo = `date` job $JOB_NAME done
 ```
 `-gt` is the fraction of sequences with a gap allowed, the default is 1.
+
+To run trimAL on all files run this command:
+`for file in *.mafft; do qsub -o trimal-$file.log trimal.job $file; done`
 
 
 ### 4. Species tree reconstruction
