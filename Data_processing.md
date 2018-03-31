@@ -314,6 +314,7 @@ echo = `date` job $JOB_NAME done
 `-gt` is the fraction of sequences with a gap allowed, the default is 1.
 
 To run trimAL on all files run this command:
+
 `for file in *.mafft; do qsub -o trimal-$file.log trimal.job $file; done`
 
 
