@@ -27,7 +27,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra cl
       zcat "$f" | awk -v fn="$f" -v OFS='\t' 'END{print fn, int(NR/4)}'
    done > raw_reads_summary.txt
    ```
-* Job file to submit to the Hydra:
+* Below is the job file to submit to Hydra:
 
    ```
    # /bin/sh
@@ -52,6 +52,8 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra cl
    #
    echo = `date` job $JOB_NAME done
    ```
+   * Assume you named the job file `counts.job`. Then in the shell prompt write `qsub counts.job`, so the `qsub` program will submit `counts.job` to the Hydra cluster.
+   
 * Summary example:
 
    ```
