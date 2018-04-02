@@ -163,6 +163,8 @@ To run the script for multiple samples, you can use this command and recall the 
 
 `while read name; do ./reads_first.py -b all-genes.fas -r $name*.fastq --prefix $name --bwa --cpu $NSLOTS; done < namelist.txt`
 
+* For read mapping you can use BWA (Burrows–Wheeler Alignment) or Bowtie2.
+
 * If you want to recover  Chloroplast or Mitochondrial genes, run `./reads_first.py' same as above, but use organellar genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference. Use mitochondrial genome of closest lineage to recover mitochondrial loci.
 
 
