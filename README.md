@@ -7,6 +7,7 @@ Vatanparast, M., A. Powell, J. J. Doyle, and A. N. Egan. 2018. Targeting legume 
 
 
 
+
 Example phylogenetic trees using different species tree reconstruction methods.
 
 ![example-tree](https://user-images.githubusercontent.com/13125143/35277516-f3342a4e-003e-11e8-8fa7-9bb5c513a2b0.jpg)
