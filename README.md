@@ -6,7 +6,7 @@ Paper:
 
 Vatanparast, M., A. Powell, J. J. Doyle, and A. N. Egan. 2018. Targeting legume loci: A comparison of three methods for target enrichment bait design in Leguminosae phylogenomics. [Applications in Plant Sciences 6(3): e01036](https://onlinelibrary.wiley.com/doi/full/10.1002/aps3.1036)
 
-
+Datasets are available from Figshare: https://doi.org/10.6084/m9.figshare.c.4040372
 
 
 Example phylogenetic trees using different species tree reconstruction methods.
