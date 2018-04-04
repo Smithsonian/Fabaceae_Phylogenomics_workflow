@@ -287,7 +287,7 @@ echo = `date` $JOB_NAME for taskID=$TASK_ID done.
 ```
 `--localpair` uses the `L-INS-i` algorithm which probably is the most accurate, and recommended for < 200 sequences (for more see the MAFFT manual)
 
-Use this for loop to send jobs for as many files as you have in `*.FNA` format.
+Use this `for` loop to send jobs for as many files as you have in `*.FNA` format.
 
 `for file in *.FNA; do qsub -o mafft-$file.log mafft.job $file; done`
 
