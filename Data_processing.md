@@ -19,6 +19,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra cl
 13. Run `RAxML` to generate gene trees.
 14. Concatenate gene trees using `cat` command, each tree in a separate line.
 15. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it on the local computer rather than sending a job to the cluster. It's very fast so you can run on a laptop too!
+16. Run `HybPiper/cleanup.py` script to clean up unnecessary files, mainly output of SPAdes assembler.
 
 
 ### Count raw reads (optional!)
