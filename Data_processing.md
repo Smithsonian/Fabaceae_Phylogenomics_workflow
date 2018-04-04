@@ -257,7 +257,7 @@ python ./intronerate.py --prefix Camptosema_ellipticum
 echo = `date` job $JOB_NAME done
 ```
 
-Here is an example of files for gene 14 after running `reads_first.job` and `intronerate.job`. `gene14.FNA` contains nucleotide sequence (targeted sequence) of gene 14 that will be used in the subsequent analysis. `gene14.FAA` is amino acid sequence and `gene14_introns.fasta` intron sequence for gene 14. These folders will be empty (such as gene 314) if the gene didn't recover by the pipeline. 
+Here is an example of files for gene 14 after running `reads_first.job` and `intronerate.job`. `gene14.FNA` contains nucleotide sequence (targeted sequence) of gene 14 that will be used in the subsequent analysis. `gene14.FAA` is amino acid sequence and `gene14_introns.fasta` intron sequence for gene 14. If the gene didn't recover by the pipeline, these folders will be empty (such as gene 314).
 
 ![gene-folder-structure](https://user-images.githubusercontent.com/13125143/36260813-676e23b0-125a-11e8-8e6d-efcb030daede.jpg)   ![unrecovered-gene](https://user-images.githubusercontent.com/13125143/36261605-cdfb7a72-125c-11e8-85d0-e4a97bdc5b84.jpg)
 
