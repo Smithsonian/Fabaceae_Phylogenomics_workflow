@@ -351,7 +351,9 @@ Use `-q` option to get the scores for the quartets in each node. You can use `-t
 ```
 java -jar astral.5.5.2.jar -q speciestree-astral.tre -i genetrees.tre -o speciestree-astral-scored.tre 2> astral-scored.log
 ```
-Check the `.log` file, to see how many trees have missing taxa. Also, check "normalized quartet score," which vary between 0-1, the higher score represents less discordant on gene trees. However, this is not a direct assessment of the discordance on each node among gene trees! 
+Check the `.log` file, to see how many trees have missing taxa. Also, check "normalized quartet score," which vary between 0-1, the higher score represents less discordant on gene trees. However, this is not a direct assessment of the discordance on each node among gene trees!
+
+You can visualize trees using programs like [Figtree](http://tree.bio.ed.ac.uk/software/figtree/). See the complete list in [Wikipedia](https://en.wikipedia.org/wiki/List_of_phylogenetic_tree_visualization_software).
 
 
 ### Clean up
