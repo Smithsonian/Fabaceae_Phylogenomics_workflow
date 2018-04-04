@@ -20,7 +20,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra cl
 14. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it on the local computer rather than sending a job to the cluster. It's very fast so you can run on a laptop too!
 
 
-### 1. Count raw reads (optional!)
+### Count raw reads (optional!)
 * This script reads fastq files in gzip format and counts 1/4 of lines as a number of raw reads per file. Use gzcat or zcat based on the Linux distro (gzcat works fine in macOS). Summary of the reads will be written to the `tab-delimited` file `raw_reads_summary.txt`.
    ```
    for f in *R1*_.fastq.gz; do
@@ -62,7 +62,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra cl
    AE110_R1.fastq.gz    2988984
    AE111_R1.fastq.gz    5635389
    ```
-### 2. Trimming adapters and low quality reads
+### Trimming adapters and low quality reads
 I use Trimmomatic to trim adapters, and low quality reads before assembly with following job file:
 
    ```
@@ -129,7 +129,7 @@ To evaluate the trimmed reads, use [FASTQC](https://www.bioinformatics.babraham.
    ```
 * Check HTML output file in a browser like Firefox.
 
-### 3. Running HybPiper pipeline
+### Running HybPiper pipeline
 [HybPiper](https://github.com/mossmatters/HybPiper) is a suite of Python scripts that use bioinformatics tools to extract target sequences from target-enriched reads. All bioinformatics modules need to be loaded via job file, or you can load them from the login node manually. The 'all-genes.fas' is a reference sequence that probes (baits) designed based upon it and HybPiper will map reads to this reference. It requires being in a specific format. Sine the pipeline use SPAdes assembler, the job file set to run in the high memory nodes (himem). Maximum CPU, in this case, is 16. It's possible to use Velvet assembler instead of SPAdes. I used SPAdes in this example. In this step you need `fastq` files.
 
 ```
@@ -322,9 +322,26 @@ To run trimAL on all files run this command:
 `for file in *.mafft; do qsub -o trimal-$file.log trimal.job $file; done`
 
 
-### 4. Species tree reconstruction
+### Assessing Paralogs
+
+HybPiper includes the script `paralog_retriever.py` which collect all paralogs from each sample in `name.txt`, along with all coding sequences from samples without paralogs. If you have a list of genes `gene-list.txt` for which you want to assess paralogs, you can use GNU Parallel with this command:
+
+```
+cat gene-list.txt | parallel -k "python ./paralog_retriever.py name.txt {} > {}.paralogs.fasta" 2> paralogs.txt
+```
+### Get summary of the targeted genes using the [AMAS](https://github.com/marekborowiec/AMAS). 
+
+The following command writes alignments summary such as alignments length, variable sites, etc. to the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or `-aa` for amino acid, `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed. I recommend installing Python 3 using [Miniconda](https://conda.io/miniconda.html). Also use `pip install biopython` to install Biopython, which usually is the latest version.
+
+```
+python ./AMAS.py summary -f fasta -d dna -i *.fas -c 6
+```
+
+### Species tree reconstruction
 There are multiple programs to infer species trees from gene trees. For example, [ASTRAL](https://github.com/smirarab/ASTRAL) is one of the statistically consistent summary methods to get species tree from gene trees. Gene trees can be obtained by RAxML or FastTree, then concatenated gene trees into a single file by `cat` command, each gene tree on a separate line in Newick format. 
-To run ASTRAL, you need to have [Java](https://java.com/). If your dataset is large, you can invoke more memory to run ASTRAL with an option like `-Xmx3000M` which requests 3GB of RAM. `Xmx` is the maximum amount you want to allocate in MB. `-i` input file, `-o` name of the output file, `2>` writes stdout to the file (recommended). 
+To run ASTRAL, you need to have [Java](https://java.com/). If your dataset is large, you can invoke more memory to run ASTRAL with an option like `-Xmx3000M` which requests 3GB of RAM. `Xmx` is the maximum amount of memory you want to allocate in MB. 
+
+`-i` input file, `-o` name of the output file, `2>` writes stdout to the file (recommended). 
 
 ```
 java -jar astral.5.5.2.jar -i genetrees.tre -o speciestree-astral.tre 2> astral.log
@@ -335,22 +352,8 @@ java -jar astral.5.5.2.jar -q speciestree-astral.tre -i genetrees.tre -o species
 ```
 Check the .log file, to see how many trees have missing taxa. Also, check "normalized quartet score," which vary between 0-1, the higher score represents less discordant on gene trees. However, this is not a direct assessment of the discordance on each node among gene trees! 
 
-### 5. Get summary of the targeted genes using the [AMAS](https://github.com/marekborowiec/AMAS). 
 
-The following command writes alignments summary such as alignments length, variable sites, etc. to the `summary.txt` file. `-f` input file format in fasta. AMAS can handle nexus and phylip format too. `-d` dna or `-aa` for amino acid, `*.fas` calculate for all files with `.fas` extension, `-c` number of cores (CPU). You need Python 3 installed. I recommend installing Python 3 using [Miniconda](https://conda.io/miniconda.html). Also use `pip install biopython` to install Biopython, which usually is the latest version.
-
-```
-python ./AMAS.py summary -f fasta -d dna -i *.fas -c 6
-```
-
-### 6. Assessing Paralogs
-
-HybPiper includes the script `paralog_retriever.py` which collect all paralogs from each sample in `name.txt`, along with all coding sequences from samples without paralogs. If you have a list of genes `gene-list.txt` for which you want to assess paralogs, you can use GNU Parallel with this command:
-
-```
-cat gene-list.txt | parallel -k "python ./paralog_retriever.py name.txt {} > {}.paralogs.fasta" 2> paralogs.txt
-```
-### 7. Clean up
+### Clean up
 Use `cleanup.py` script from HybPiper to remove thousands of unnecessary files, mainly the output of SPAdes assembler. There is a file number limit on Hydra cluster for each user, so this job needs to be done regularly.
 
 ```
