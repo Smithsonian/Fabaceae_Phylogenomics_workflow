@@ -355,7 +355,7 @@ Check the `.log` file, to see how many trees have missing taxa. Also, check "nor
 
 
 ### Clean up
-Use `cleanup.py` script from HybPiper to remove thousands of unnecessary files, mainly the output of SPAdes assembler. There is a file number limit on Hydra cluster for each user, so this job needs to be done regularly.
+Use `HybPiper/cleanup.py` script to remove thousands of unnecessary files, mainly the output of SPAdes assembler. There is a file number limit on Hydra cluster for each user, so this job needs to be done regularly.
 
 ```
 # /bin/sh
