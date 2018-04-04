@@ -16,7 +16,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra cl
 10. Run `MAFFT` to align sequences.
 11. Run `TrimAl` to trim alignments.
 12. Run `RAxML` to generate gene trees.
-13. Concat the gene trees using `cat` command, each tree in a separate line.
+13. Concatenate gene trees using `cat` command, each tree in a separate line.
 14. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it on the local computer rather than sending a job to the cluster. It's very fast so you can run on a laptop too!
 
 
