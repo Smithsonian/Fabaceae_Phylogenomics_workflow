@@ -13,11 +13,12 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra cl
 7. Run the `HybPiper/reads_first.py` script. Use `while` loop to run on multiple samples.
 8. Run the `HybPiper/intronerate.py` script to get intron sequences.
 9. Run the `HybPiper/retrieve_sequences.py` script to get targeted gene sequences
-10. Run `MAFFT` to align sequences.
-11. Run `TrimAl` to trim alignments.
-12. Run `RAxML` to generate gene trees.
-13. Concatenate gene trees using `cat` command, each tree in a separate line.
-14. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it on the local computer rather than sending a job to the cluster. It's very fast so you can run on a laptop too!
+10. Run the `HybPiper/paralog_retriever.py` script to assess paralogs.
+11. Run `MAFFT` to align sequences.
+12. Run `TrimAl` to trim alignments.
+13. Run `RAxML` to generate gene trees.
+14. Concatenate gene trees using `cat` command, each tree in a separate line.
+15. Run `ASTRAL` to build the species tree. ASTRAL is a java application, so its better to run it on the local computer rather than sending a job to the cluster. It's very fast so you can run on a laptop too!
 
 
 ### Count raw reads (optional!)
