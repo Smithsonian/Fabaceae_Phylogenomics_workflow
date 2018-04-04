@@ -27,7 +27,7 @@ Following steps are meant to be run on the Smithsonian Institution HPC (Hydra cl
       zcat "$f" | awk -v fn="$f" -v OFS='\t' 'END{print fn, int(NR/4)}'
    done > raw_reads_summary.txt
    ```
-* Below is the job file to submit to Hydra:
+* Here is the job file to submit to Hydra:
 
    ```
    # /bin/sh
@@ -165,7 +165,7 @@ To run the script for multiple samples, you can use this command and recall the 
 
 `while read name; do ./reads_first.py -b all-genes.fas -r $name*.fastq --prefix $name --bwa --cpu $NSLOTS; done < namelist.txt`
 
-* For read mapping you can use BWA (Burrows–Wheeler Alignment) or Bowtie2 method.
+* For read mapping you can use [BWA](https://github.com/lh3/bwa) (Burrows–Wheeler Alignment) or Bowtie2 method.
 
 * If you want to recover  Chloroplast or Mitochondrial genes, run `./reads_first.py` same as above, but use organellar genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference. Use mitochondrial genome of closest lineage to recover mitochondrial loci.
 
