@@ -168,7 +168,7 @@ To run the script for multiple samples, you can use this command and recall the 
 
 * For read mapping you can use [BWA](https://github.com/lh3/bwa) (Burrows–Wheeler Alignment) or [Bowtie2](https://github.com/BenLangmead/bowtie2) method.
 
-* If you want to recover  Chloroplast or Mitochondrial genes, run `./reads_first.py` same as above, but use organellar genomes as a reference. I used soybean Chloroplast genome (GenBank: **DQ317523**) as a reference. Use mitochondrial genome of closest lineage to recover mitochondrial loci.
+* If you want to recover  Chloroplast or Mitochondrial genes, run `./reads_first.py` same as above, but use organellar genomes as a reference. I used soybean Chloroplast genome (GenBank: [**DQ317523**](https://www.ncbi.nlm.nih.gov/nuccore/DQ317523)) as a reference. Use mitochondrial genome of closest lineage to recover mitochondrial loci.
 
 
 ## Targeted loci recovery heatmap
