@@ -356,6 +356,7 @@ Check the `.log` file, to see how many trees have missing taxa. Also, check "nor
 
 You can visualize trees using programs like [FigTree](http://tree.bio.ed.ac.uk/software/figtree/). See the complete list in [Wikipedia](https://en.wikipedia.org/wiki/List_of_phylogenetic_tree_visualization_software).
 
+You can also use SVDQuartets which is implemented in [PAUP*](http://paup.phylosolutions.com/) to build species tree.
 
 ### Clean up
 Use `HybPiper/cleanup.py` script to remove thousands of unnecessary files, mainly the output of SPAdes assembler. There is a file number limit on Hydra cluster for each user, so this job needs to be done regularly.
