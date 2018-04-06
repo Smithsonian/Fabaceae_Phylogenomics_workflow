@@ -355,7 +355,7 @@ java -jar astral.5.5.2.jar -q speciestree-astral.tre -i genetrees.tre -o species
 Check the `.log` file, to see how many trees have missing taxa. Also, check "normalized quartet score," which vary between 0-1, the higher score represents less discordant on gene trees. However, this is not a direct assessment of the discordance on each node among gene trees!
 
 
-You can also use [SVDQuartets](https://github.com/Smithsonian/Fabaceae_Phylogenomics_workflow/blob/master/SVDquartets.md) which is implemented in [PAUP*](http://paup.phylosolutions.com/) to build species tree.
+You can also use [SVDquartets](https://github.com/Smithsonian/Fabaceae_Phylogenomics_workflow/blob/master/SVDquartets.md) which is implemented in [PAUP*](http://paup.phylosolutions.com/) to build species tree.
 
 Alternatively, you can concatenate all genes alignments into a single file (supermatrix), run [PartitionFinder](https://github.com/brettc/partitionfinder) to obtain model block for each gene, and then run RAxML with defining the blocks to build species tree. See the job file for PartitionFinder.
 
