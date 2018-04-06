@@ -354,9 +354,12 @@ java -jar astral.5.5.2.jar -q speciestree-astral.tre -i genetrees.tre -o species
 ```
 Check the `.log` file, to see how many trees have missing taxa. Also, check "normalized quartet score," which vary between 0-1, the higher score represents less discordant on gene trees. However, this is not a direct assessment of the discordance on each node among gene trees!
 
-You can visualize trees using programs like [FigTree](http://tree.bio.ed.ac.uk/software/figtree/). See the complete list in [Wikipedia](https://en.wikipedia.org/wiki/List_of_phylogenetic_tree_visualization_software).
 
 You can also use [SVDQuartets](https://github.com/Smithsonian/Fabaceae_Phylogenomics_workflow/blob/master/SVDquartets.md) which is implemented in [PAUP*](http://paup.phylosolutions.com/) to build species tree.
+
+Alternatively, you can concatenate all genes alignments into a single file (supermatrix), run [PartitionFinder](https://github.com/brettc/partitionfinder) to obtain model block for each gene, and then run RAxML with defining the blocks to build species tree. See the job file for PartitionFinder.
+
+You can visualize trees using programs like [FigTree](http://tree.bio.ed.ac.uk/software/figtree/). See the complete list in [Wikipedia](https://en.wikipedia.org/wiki/List_of_phylogenetic_tree_visualization_software).
 
 ### Clean up
 Use `HybPiper/cleanup.py` script to remove thousands of unnecessary files, mainly the output of SPAdes assembler. There is a file number limit on Hydra cluster for each user, so this job needs to be done regularly.
