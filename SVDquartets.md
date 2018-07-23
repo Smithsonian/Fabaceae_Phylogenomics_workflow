@@ -51,19 +51,9 @@ You can invoke SVDquartets help by typing `svdq ?` in the command line of PAUP.
                                                    *Option is nonpersistent
  ```
 
-### Analysis with bootstrap:
-```
-execute concatenated.nexus; SVDQuartets evalQuartets=all nthreads=12 seed=12345678 bootstrap=standard nrep=200;
-```
-### Analysis without bootstrapp, selecting "Show quartet scores":
-
-```
-execute concatenated.nexus; SVDQuartets evalQuartets=all nthreads=12 seed=12345678 showScores=yes;
-```
-
 ### Run SVDQuartets on cluster
 
-Create a nexus file like the following and then execute this nexus file via the job file, invoking paup.
+Create a nexus file like the following and then execute this nexus file via the job file, invoking paup (see the job file in this repo).
 
 ```
 #nexus
