@@ -1,0 +1,22 @@
+# /bin/sh
+# ----------------Parameters---------------------- #
+#$ -S /bin/sh
+#$ -pe mthread 32-64
+#$ -q lThC.q
+#$ -l mres=4G,h_data=4G,h_vmem=4G
+#$ -cwd
+#$ -j y
+#$ -N svd
+#$ -o svd.log
+#
+# ----------------Modules------------------------- #
+module load bioinformatics/paup
+#
+# ----------------Your Commands------------------- #
+#
+echo + `date` job $JOB_NAME started in $QUEUE with jobID=$JOB_ID on $HOSTNAME
+echo + NSLOTS = $NSLOTS
+#
+paup -n run.nex;
+#
+echo = `date` job $JOB_NAME done
