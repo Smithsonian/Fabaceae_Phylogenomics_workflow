@@ -1,4 +1,4 @@
-# Running SVDquartets
+# Running SVDquartets on cluster
 The SVDquartets infers relationships among quartets of taxa under the coalescent model using algebraic statistics and combines quartet trees into a species tree.
 
 ## What we need:
@@ -59,6 +59,24 @@ execute concatenated.nexus; SVDQuartets evalQuartets=all nthreads=12 seed=123456
 
 ```
 execute concatenated.nexus; SVDQuartets evalQuartets=all nthreads=12 seed=12345678 showScores=yes;
+```
+
+### Run SVDQuartets on cluster
+
+Create a nexus file like the following and then execute this nexus file via the job file, invoking paup.
+
+```
+#nexus
+
+begin paup;
+ execute concatenated.nex;
+
+ SVDQuartets nquartets=500000 nthreads=64 seed=0 bootstrap=standard nrep=500;
+
+ SaveTrees file=svd.tre;
+
+end;
+
 ```
 
 There is a great tutorial [here](http://www.stat.osu.edu/~lkubatko/SVDquartets_tutorial2015.html) on running SVDquartets.
