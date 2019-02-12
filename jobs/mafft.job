@@ -16,6 +16,6 @@ module load bioinformatics/mafft
 
 echo + `date` $JOB_NAME started on $HOSTNAME in $QUEUE with jobID=$JOB_ID and taskID=$TASK_ID
 #
-mafft --localpair --maxiterate 1000 --thread $NSLOTS  $1 > $1.mafft
+mafft --localpair --maxiterate 1000 --adjustdirection --thread $NSLOTS  $1 > $1.mafft
 #
 echo = `date` $JOB_NAME for taskID=$TASK_ID done.
